@@ -1,0 +1,128 @@
+#checkout-dialog {
+  width: min(810px, calc(100% - 24px));
+  max-width: none;
+  max-height: calc(100dvh - 24px);
+  padding: clamp(16px, 4vw, 32px);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+#checkout-dialog [hidden],
+#view-pagamentos [hidden] {
+  display: none;
+}
+#checkout-dialog h2 {
+  font: 600 clamp(24px, 4vw, 34px) / 1.1 var(--font);
+}
+#checkout-dialog h3 {
+  font-size: 17px;
+  margin: 0;
+}
+#checkout-dialog .close-button {
+  min-width: 44px;
+  min-height: 44px;
+}
+.checkout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 20px;
+  align-items: start;
+}
+.checkout-card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+  padding: clamp(14px, 3vw, 21px);
+}
+.checkout-card p {
+  margin: 0;
+  line-height: 1.5;
+}
+.checkout-status {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-weight: 600;
+}
+.checkout-status[data-state='aprovado'] {
+  border-color: currentColor;
+}
+.checkout-pix {
+  display: grid;
+  gap: 10px;
+}
+.checkout-pix img {
+  width: min(100%, 220px);
+  aspect-ratio: 1;
+  padding: 10px;
+  background: white;
+  border-radius: 12px;
+  justify-self: center;
+}
+#checkout-dialog .checkout-pix label {
+  margin: 0;
+}
+#checkout-code {
+  width: 100%;
+  min-width: 0;
+}
+.checkout-total {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.checkout-total strong {
+  font-size: 23px;
+}
+#checkout-dialog button:not(.close-button),
+.payment-row button {
+  min-height: 44px;
+}
+#checkout-dialog button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+#checkout-feedback:empty,
+#payment-error:empty {
+  display: none;
+}
+.payment-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 4px 14px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+.payment-row small {
+  grid-row: 2;
+  color: var(--muted);
+}
+.payment-row button,
+.payment-row strong:nth-of-type(2) {
+  grid-row: 1 / span 2;
+}
+.payment-row button {
+  grid-column: 3;
+}
+@media (max-width: 620px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+  .payment-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .payment-row button {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    justify-self: start;
+  }
+}

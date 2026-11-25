@@ -1,0 +1,389 @@
+/* Galeria: posicionamento dos cartões durante a rolagem. */
+.street-gallery-heading {
+  position: absolute;
+  z-index: 10;
+  top: max(4px, calc(50% - 270px));
+  left: 0;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font: 400 clamp(20px, 2.5vw, 28px) / 1 var(--fonte-titulo);
+}
+
+.street-gallery .motion-focus {
+  --card-width: 207px;
+  --card-gap: 90px;
+  --band-padding: 119px;
+  --edge-fade: 18%;
+  --active-scale: 1.65;
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: clamp(500px, 54vw, 640px);
+  padding: 0 var(--band-padding);
+  gap: 0;
+  overflow: hidden;
+  scroll-snap-type: none;
+  touch-action: pan-y;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 var(--edge-fade),
+    #000 calc(100% - var(--edge-fade)),
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 var(--edge-fade),
+    #000 calc(100% - var(--edge-fade)),
+    transparent
+  );
+}
+
+.street-gallery .motion-focus .street-gallery-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  box-sizing: border-box;
+  width: var(--card-width);
+  height: 276px;
+  aspect-ratio: 3 / 4;
+  margin: -138px 0 0 -103.5px;
+  padding: 0;
+  flex: none;
+  border-radius: 0;
+  opacity: var(--card-opacity, 0);
+  visibility: hidden;
+  transform: translate3d(var(--card-x, 0px), 0, 0) scale(var(--card-scale, 1));
+  transform-origin: center center;
+  transition:
+    transform 1.5s cubic-bezier(0.33, 0, 0, 1),
+    opacity 1.5s cubic-bezier(0.33, 0, 0, 1);
+  transition-delay: 0s;
+  scroll-snap-align: none;
+  will-change: transform, opacity;
+}
+
+.street-gallery .motion-focus.is-ready .street-gallery-card {
+  visibility: visible;
+}
+
+.street-gallery .motion-focus.is-scroll-driven .street-gallery-card {
+  transition: none;
+}
+
+.street-gallery .motion-focus .street-gallery-card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+  image-rendering: auto;
+}
+
+@media (max-width: 760px) {
+  .street-gallery .motion-focus {
+    height: min(132vw, 560px);
+    padding: 0 var(--band-padding);
+  }
+}
+
+@media (max-width: 360px) {
+  .street-gallery .motion-focus {
+    --active-scale: 1.48;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .street-gallery .motion-focus .street-gallery-card {
+    transition: none;
+    will-change: auto;
+  }
+}
+
+/* Bordas: iluminação dos cartões conforme o movimento. */
+/* Border Glow. Design*/
+.border-glow-target {
+  --glow-radius: 28px;
+  --glow-palette: conic-gradient(from -90deg, #e8eaeb, #858b90, #ffffff, #e8eaeb);
+  position: relative;
+}
+
+.border-glow-lamp {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: var(--glow-radius);
+  pointer-events: none;
+  opacity: var(--glow-power, 0);
+}
+
+.border-glow-lamp > span {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glow-palette);
+  box-sizing: border-box;
+}
+
+.border-glow-lamp .glow-wash {
+  opacity: 0.12;
+  mask-image: radial-gradient(130px circle at var(--glow-x) var(--glow-y), black, transparent);
+}
+
+.border-glow-lamp .glow-spot {
+  background: none;
+  mask-image: radial-gradient(130px circle at var(--glow-x) var(--glow-y), black, transparent);
+}
+
+.glow-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--glow-palette);
+  mask:
+    linear-gradient(black 0 0) content-box,
+    linear-gradient(black 0 0);
+  mask-composite: exclude;
+}
+
+.glow-halo {
+  filter: blur(20px);
+}
+
+.glow-halo .glow-ring {
+  padding: 8px;
+}
+
+.street-services .plan-panel.border-glow-target {
+  --glow-radius: 12px;
+}
+
+/* Botões: partículas durante a interação. */
+.shatter-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  --halo-x: 50%;
+  --halo-y: 50%;
+}
+
+.street-services .plan-subscribe.shatter-button {
+  border-radius: 999px;
+}
+
+.shatter-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    80px circle at var(--halo-x) var(--halo-y),
+    #fff,
+    #cfcfcf80 35%,
+    transparent 80%
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.street-services .plan-subscribe.shatter-button::before {
+  transform: none;
+  background: radial-gradient(100px circle at var(--halo-x) var(--halo-y), #ffffff18, transparent);
+  transition: none;
+}
+
+.shatter-label {
+  display: block;
+  width: 100%;
+  pointer-events: none;
+}
+
+.shatter-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.shatter-button.is-shattering .shatter-canvas {
+  opacity: 1;
+}
+
+.shatter-button.is-shattering .shatter-label {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shatter-button.is-shattering .shatter-canvas {
+    opacity: 0;
+  }
+
+  .shatter-button.is-shattering .shatter-label {
+    opacity: 1;
+  }
+}
+
+/* Planos: destaque visual da opção selecionada. */
+.glow-box {
+  --box-size: 0.47;
+  --glow: 1;
+  --second-tone: 0.55;
+  --edge-light: 0.45;
+  --glass: 1;
+  --speed: 1;
+  --silver-light: 232, 234, 235;
+  --silver-tone: 133, 139, 144;
+  position: relative;
+  isolation: isolate;
+  border-radius: 28px;
+  background: #050505;
+}
+
+.glow-box-light {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+.glow-box-light::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  box-shadow:
+    0 0 32px rgba(var(--silver-light), calc(var(--glow) * 0.22)),
+    0 0 70px rgba(var(--silver-tone), calc(var(--glow) * 0.1));
+}
+
+.glow-box-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background: linear-gradient(145deg, #ffffff0a, #ffffff02 48%, #00000040);
+}
+
+.glow-box-field::before,
+.glow-box-field::after {
+  content: '';
+  position: absolute;
+  inset: -35%;
+  border-radius: 45%;
+  animation: glow-box-drift calc(8s / var(--speed)) linear infinite;
+  animation-play-state: paused;
+  transform: translate(-12%, -8%) rotate(0deg) scale(1.05);
+}
+
+.glow-box-field::before {
+  background:
+    radial-gradient(
+      ellipse at 35% 40%,
+      rgba(var(--silver-light), calc(var(--glow) * 0.46)),
+      transparent 36%
+    ),
+    radial-gradient(
+      ellipse at 68% 65%,
+      rgba(var(--silver-tone), calc(var(--second-tone) * 0.5)),
+      transparent 42%
+    );
+}
+
+.glow-box-field::after {
+  background: radial-gradient(
+    ellipse at 62% 48%,
+    rgba(var(--silver-light), calc(var(--second-tone) * 0.36)),
+    transparent 35%
+  );
+  animation-direction: reverse;
+  animation-duration: calc(11s / var(--speed));
+}
+
+.glow-box-edge {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--silver-light), var(--edge-light)),
+    #ffffff18 36%,
+    rgba(var(--silver-tone), var(--edge-light)) 78%,
+    #ffffff30
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+.glow-box-field {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(var(--glass) * 0.16));
+}
+
+.glow-box.is-glowing .glow-box-light {
+  opacity: 1;
+}
+
+.glow-box.is-glowing .glow-box-field::before,
+.glow-box.is-glowing .glow-box-field::after {
+  animation-play-state: running;
+}
+
+.street-services .plan-panel.glow-box {
+  border-radius: 12px;
+  background: var(--cor-variacao-04);
+}
+
+.street-services .plan-card:has(.plan-choice[aria-pressed='true']) .plan-panel.glow-box {
+  background: var(--cor-fundo-escuro);
+}
+
+.street-services .plan-panel.glow-box .plan-panel-content {
+  position: relative;
+  z-index: 1;
+}
+
+.street-services .plan-panel.glow-box.is-glowing > .border-glow-lamp {
+  opacity: 0;
+}
+
+.street-services .plan-panel.glow-box.is-glowing::before {
+  opacity: 0;
+}
+
+@keyframes glow-box-drift {
+  0% {
+    transform: translate(-12%, -8%) rotate(0deg) scale(1.05);
+  }
+
+  25% {
+    transform: translate(13%, -6%) rotate(90deg) scale(1.15);
+  }
+
+  50% {
+    transform: translate(10%, 12%) rotate(180deg) scale(1.05);
+  }
+
+  75% {
+    transform: translate(-12%, 8%) rotate(270deg) scale(1.15);
+  }
+
+  100% {
+    transform: translate(-12%, -8%) rotate(360deg) scale(1.05);
+  }
+}
+
+/* Animação do destaque na página inicial. */

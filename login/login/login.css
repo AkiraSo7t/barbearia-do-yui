@@ -1,0 +1,19 @@
+.demo-credentials {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #e8e8ed;
+  font:
+    13px/1.6 'DM Sans',
+    sans-serif;
+}
+.demo-credentials span {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: #c6c8d4;
+}
+.demo-credentials strong {
+  font-weight: 600;
+}

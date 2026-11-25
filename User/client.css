@@ -1,0 +1,363 @@
+/* Paleta GUREN compartilhada com a landing page e o login. */
+:root {
+  --paper: #f3f2ef;
+  --white: #fff;
+  --ink: #11100e;
+  --muted: #635f58;
+  --line: #d8d5cf;
+  --navy: #06174b;
+  color: #11100e;
+  background: #f3f2ef;
+}
+body,
+.app-shell,
+.main-content {
+  background: #f3f2ef;
+  color: #11100e;
+}
+.sidebar {
+  background: #050505;
+}
+.sidebar .brand {
+  background: #fff;
+}
+.sidebar .brand::before {
+  color: #11100e;
+}
+.nav-item:hover {
+  background: #272727;
+}
+.nav-item.is-active {
+  background: #efebdc;
+}
+.nav-item.is-active .nav-icon {
+  filter: none;
+}
+.dash-card,
+.detail-grid > .dash-card,
+.detail-view .plan-card,
+.profile-grid .profile-form {
+  background: #fff;
+  border-color: #e4e0d8;
+  box-shadow: 0 3px 14px rgba(17, 16, 14, 0.045);
+}
+.dash-card h2,
+.detail-heading h1,
+.dashboard-title,
+.metric-card strong,
+.detail-empty strong {
+  color: #11100e;
+}
+.dash-card p,
+.detail-heading p,
+.detail-empty p,
+.profile-security p {
+  color: #635f58;
+}
+.dash-kicker,
+.metric-label,
+.dash-card-head .dash-kicker,
+.detail-section-title span {
+  color: #6b675f;
+}
+.dash-card-head button {
+  border-color: #d8d5cf;
+  color: #11100e;
+}
+.dash-card-head button:hover {
+  background: #f3f2ef;
+}
+.dash-button,
+.button-dark {
+  background: #06174b;
+  color: #fff;
+}
+.dash-button:hover,
+.button-dark:hover {
+  background: #142b71;
+}
+.dash-text-link {
+  color: #06174b;
+}
+.dash-banner {
+  background: linear-gradient(112deg, #efebdc 0%, #e9e6dd 58%, #d8d3c2 100%);
+}
+.banner-sculpture {
+  filter: drop-shadow(0 11px 12px rgba(6, 23, 75, 0.15));
+}
+.banner-sculpture span {
+  background: linear-gradient(130deg, #f7f5ee 6%, #aeb6c9 42%, #06174b 85%, #dce1ed 100%);
+  box-shadow:
+    inset 7px 8px 13px #fff9,
+    inset -10px -12px 18px #06174b33;
+}
+.dash-calendar,
+.dash-services,
+.dash-plan,
+.dash-gallery,
+.dash-stats,
+.dash-notices {
+  background: #fff;
+}
+.calendar-day.is-today,
+.calendar-day.is-today:hover {
+  background: #06174b;
+  color: #fff;
+}
+.calendar-day:hover:not(:disabled):not(.is-today) {
+  background: #efebdc;
+}
+.service-lilac {
+  background: #efebdc;
+}
+.service-blue {
+  background: #dfe4ed;
+}
+.service-green {
+  background: #ecebe6;
+}
+.service-symbol,
+.detail-hero .detail-icon,
+.profile-intro .detail-icon,
+.plan-overview .detail-icon {
+  background: #06174b;
+}
+.dash-visit {
+  background: #e5e9f1;
+}
+.dash-promo {
+  background: #efebdc;
+}
+.promo-art {
+  border-color: #bfc7d8;
+  box-shadow:
+    inset 13px 8px 15px #06174b22,
+    10px 18px 15px #06174b25;
+}
+.promo-art:after {
+  border-color: #d5d9e1;
+}
+.stat-small span,
+.detail-list .empty-state,
+.detail-empty,
+.notice-entry {
+  background: #f8f7f4;
+  border-color: #e2ded6;
+}
+.notice-icon {
+  background: #e5e9f1;
+}
+.detail-hero.lavender,
+.plan-overview.lavender,
+.profile-intro.lavender {
+  background: #efebdc;
+}
+.detail-hero.blue {
+  background: #dfe4ed;
+}
+.detail-hero.green {
+  background: #e9e7df;
+}
+.detail-view .plan-card.featured {
+  background: #e5e9f1;
+}
+.detail-view .plan-card li,
+.rule-row {
+  border-color: #e4e0d8;
+}
+.profile-form input,
+.booking-dialog input,
+.booking-dialog select {
+  border-color: #c9c5bc;
+}
+.booking-dialog {
+  background: #f3f2ef;
+}
+.booking-dialog::backdrop {
+  background: rgba(5, 5, 5, 0.67);
+}
+.topbar {
+  background: #f3f2ef;
+}
+@media (max-width: 700px) {
+  .sidebar {
+    background: #050505;
+  }
+  .topbar {
+    background: #f3f2ef;
+  }
+  .app-shell,
+  .main-content,
+  body {
+    background: #f3f2ef;
+  }
+}
+
+.accent {
+  color: #06174b;
+}
+.top-tab.is-active {
+  background: #06174b;
+  color: #fff;
+}
+.avatar {
+  background: #efebdc;
+  color: #11100e;
+}
+.notice-count {
+  background: #e5e9f1;
+  color: #06174b;
+}
+
+@media (min-width: 701px) {
+  .sidebar .side-nav .nav-item.is-active {
+    border-radius: 50%;
+  }
+}
+
+/* Menu grafite do Cliente no modo claro. */
+:where(:root[data-light-panel-theme]) .app-shell > .sidebar {
+  background: #202020;
+  border-right: 1px solid #424242;
+  color: #f5f5f5;
+}
+
+:where(:root[data-light-panel-theme]) .app-shell .sidebar .side-nav .nav-item {
+  color: #f5f5f5;
+}
+
+:where(:root[data-light-panel-theme]) .app-shell .sidebar .side-nav .nav-item:hover {
+  background: #383838;
+}
+
+:where(:root[data-light-panel-theme]) .app-shell .sidebar .side-nav .nav-item.is-active,
+:where(:root[data-light-panel-theme]) .app-shell .sidebar .side-nav .nav-item.is-active:hover {
+  background: #f2f2f2;
+  color: #141414;
+}
+
+:where(:root[data-light-panel-theme]) .app-shell .sidebar .side-nav .nav-item .nav-label {
+  color: inherit;
+}
+
+:where(:root[data-light-panel-theme]) .app-shell .sidebar .side-nav .nav-item .nav-icon {
+  filter: brightness(0) invert(1);
+}
+
+:where(:root[data-light-panel-theme]) .app-shell .sidebar .side-nav .nav-item.is-active .nav-icon {
+  filter: brightness(0);
+}
+
+:where(:root[data-light-panel-theme]) .app-shell .sidebar :is(.brand, .nav-item):focus-visible {
+  outline-color: #f5f5f5;
+}
+
+/* Avisos de remarcação */
+#rescheduling-notices,
+#rescheduling-summary {
+  display: grid;
+  gap: 10px;
+}
+.rescheduling-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  line-height: 1.45;
+}
+.rescheduling-notice strong {
+  display: block;
+  font-size: 14px;
+}
+.rescheduling-notice p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.rescheduling-notice small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.rescheduling-icon {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  padding: 8px;
+  border-radius: 9px;
+  background: #e5e9f1;
+}
+#latest-rescheduling-notice:not(:empty) + .dash-notice {
+  display: none;
+}
+.sidebar .side-nav .nav-item .notice-count:not([hidden]) {
+  display: grid;
+  position: absolute;
+  top: -3px;
+  right: -4px;
+  z-index: 1;
+  place-items: center;
+  box-sizing: border-box;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 3px;
+  border-radius: 20px;
+  border: 2px solid #202020;
+  background: #d92d20;
+  color: #fff;
+  font:
+    700 10px/1 'DM Sans',
+    sans-serif;
+}
+.sidebar .side-nav .nav-item[data-view='notificacoes'] {
+  position: relative;
+  overflow: visible;
+}
+@media (max-width: 700px) {
+  .sidebar .side-nav .nav-item .notice-count:not([hidden]) {
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+  }
+}
+.booking-detail .rescheduling-label {
+  font-weight: 700;
+  color: var(--ink);
+}
+.rescheduling-dialog {
+  width: min(540px, calc(100% - 24px));
+  max-height: calc(100dvh - 24px);
+  padding: clamp(20px, 5vw, 36px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 24px 80px #0004;
+}
+.rescheduling-dialog::backdrop {
+  background: #080c1b99;
+  backdrop-filter: blur(4px);
+}
+.rescheduling-dialog h2 {
+  margin: 12px 0 20px;
+  font-size: clamp(26px, 6vw, 38px);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+}
+.rescheduling-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.rescheduling-actions button {
+  min-height: 44px;
+}
+.rescheduling-notice button {
+  margin-top: 8px;
+}

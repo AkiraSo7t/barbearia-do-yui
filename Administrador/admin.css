@@ -1,0 +1,180 @@
+/* Componentes específicos da administração. */
+/* Painel administrativo: mesma estrutura da área do barbeiro, com espaço para gestão. */
+.dashboard-note {
+  font:
+    11px/1.5 'IBM Plex Mono',
+    monospace;
+  color: #777781;
+  margin: 18px 2px;
+}
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.plan {
+  padding: 26px;
+  min-height: 245px;
+  display: flex;
+  flex-direction: column;
+}
+.plan.highlighted {
+  background: #e2def7;
+}
+.plan h2 {
+  font-size: 29px;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  margin: 22px 0 8px;
+}
+.plan strong {
+  font-size: 26px;
+  font-weight: 600;
+}
+.plan strong small {
+  font-size: 12px;
+  font-weight: 400;
+}
+.plan p {
+  font-size: 12px;
+  color: #66636f;
+  line-height: 1.5;
+  margin-top: auto;
+}
+.feature {
+  background: linear-gradient(115deg, #e0dbf5, #e8ddea);
+}
+@media (max-width: 900px) {
+  .plan-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 650px) {
+  .plan {
+    min-height: 200px;
+  }
+}
+
+.plan [data-benefits] {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+#dialog-fields textarea {
+  width: 100%;
+  min-height: 96px;
+  padding: 10px 12px;
+  border: 1px solid #d7d5db;
+  border-radius: 9px;
+  background: #fafafa;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+#dialog-fields textarea:focus-visible {
+  outline: 2px solid #06174b;
+  outline-offset: 3px;
+}
+
+.client-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.client-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 1.2fr) minmax(110px, 0.85fr) minmax(90px, 0.6fr) minmax(
+      120px,
+      1fr
+    ) auto;
+}
+
+.client-plan small,
+.client-absences small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.client-plan strong,
+.client-absences strong {
+  display: block;
+  font-size: 13px;
+}
+
+.status.suspended {
+  background: #f9edda;
+  color: #71470c;
+}
+
+.client-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+@media (max-width: 800px) {
+  .client-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .client-row .row-actions {
+    grid-column: 1 / -1;
+    justify-content: end;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1150px) {
+  .client-row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .client-row .row-actions {
+    grid-column: 1 / -1;
+  }
+}
+
+.schedule-blocks {
+  margin-top: 14px;
+}
+
+#report-totals {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 20px;
+  max-width: 360px;
+}
+
+#report-totals dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+@media print {
+  .sidebar,
+  #print-report,
+  #report-date,
+  #view-relatorios .card-head label,
+  .toast {
+    display: none !important;
+  }
+
+  .app,
+  #view-relatorios.shown {
+    display: block;
+  }
+
+  .content {
+    padding: 0;
+  }
+
+  #view-relatorios .card {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+}

@@ -1,0 +1,505 @@
+/* Os ajustes do modo escuro ficam separados dos estilos claros de cada painel. */
+:root:where(:not([data-light-panel-theme])) {
+  color-scheme: dark;
+  --panel-base: #0c0d10;
+  --panel-rail: #0a0a0d;
+  --panel-sidebar: #202020;
+  --panel-sidebar-line: #424242;
+  --panel-sidebar-hover: #383838;
+  --panel-sidebar-active: #f2f2f2;
+  --panel-sidebar-active-text: #141414;
+  --panel-surface: #151519;
+  --panel-inset: #1b1b20;
+  --panel-hover: #29292f;
+  --panel-line: #3b3b43;
+  --panel-control: #777680;
+  --panel-text: #f5f5fa;
+  --panel-muted: #bcbac6;
+  --panel-accent: #ddc9fa;
+  --panel-tint: #2b2237;
+  --panel-error: #ffd7e5;
+  --ink: var(--panel-text);
+  --paper: var(--panel-base);
+  --white: var(--panel-surface);
+  --line: var(--panel-line);
+  --muted: var(--panel-muted);
+  --navy: var(--panel-accent);
+  --lilac: var(--panel-tint);
+  color: var(--panel-text);
+  background: var(--panel-base);
+}
+
+:where(:root:not([data-light-panel-theme])) body,
+:where(:root:not([data-light-panel-theme])) body .app-shell,
+:where(:root:not([data-light-panel-theme])) body .main-content {
+  color: var(--panel-text);
+  background: var(--panel-base);
+}
+
+:where(:root:not([data-light-panel-theme])) body .topbar {
+  background: var(--panel-rail);
+  border-color: var(--panel-line);
+}
+
+:where(:root:not([data-light-panel-theme])) body .sidebar {
+  color: var(--panel-text);
+  background: var(--panel-sidebar);
+  border-right: 1px solid var(--panel-sidebar-line);
+}
+
+@media (min-width: 701px) {
+  :where(:root:not([data-light-panel-theme])) body .sidebar {
+    border-radius: 0 12px 12px 0;
+  }
+}
+
+:where(:root:not([data-light-panel-theme])) body .card,
+:where(:root:not([data-light-panel-theme])) body .dash-card,
+:where(:root:not([data-light-panel-theme])) body .detail-grid > .dash-card,
+:where(:root:not([data-light-panel-theme])) body .detail-view .plan-card,
+:where(:root:not([data-light-panel-theme])) body .profile-grid .profile-form {
+  background: var(--panel-surface);
+  border-color: var(--panel-line);
+  box-shadow:
+    inset 0 1px 0 #ffffff08,
+    0 8px 20px #0003;
+}
+
+:where(:root:not([data-light-panel-theme])) body .feature,
+:where(:root:not([data-light-panel-theme])) body .dash-banner {
+  background: radial-gradient(ellipse at top right, #3a2e46 0%, transparent 72%), #17171c;
+  border: 1px solid var(--panel-line);
+}
+
+:where(:root:not([data-light-panel-theme])) body .feature-art i,
+:where(:root:not([data-light-panel-theme])) body .banner-sculpture span {
+  background: linear-gradient(145deg, #82768e, #3b3544 52%, #221f29 84%, #594b65);
+  box-shadow:
+    inset 5px 6px 14px #ffffff38,
+    0 10px 22px #0005;
+}
+
+:where(:root:not([data-light-panel-theme])) body .banner-sculpture {
+  filter: drop-shadow(0 8px 12px #0005);
+}
+:where(:root:not([data-light-panel-theme])) body .promo-art {
+  border-color: #3f374a;
+  box-shadow: inset 10px 8px 16px #0004;
+}
+:where(:root:not([data-light-panel-theme])) body .promo-art::after {
+  border-color: #494052;
+}
+
+:where(:root:not([data-light-panel-theme])) body .metric.pale,
+:where(:root:not([data-light-panel-theme])) body .plan.highlighted,
+:where(:root:not([data-light-panel-theme])) body .dash-visit,
+:where(:root:not([data-light-panel-theme])) body .dash-promo,
+:where(:root:not([data-light-panel-theme])) body .detail-grid > .detail-hero,
+:where(:root:not([data-light-panel-theme])) body .detail-grid > .plan-overview,
+:where(:root:not([data-light-panel-theme])) body .detail-grid > .profile-intro,
+:where(:root:not([data-light-panel-theme])) body .detail-view .plan-card.featured {
+  background: var(--panel-tint);
+  border: 1px solid #53455f;
+}
+
+:where(:root:not([data-light-panel-theme])) body .dash-card h2,
+:where(:root:not([data-light-panel-theme])) body .detail-heading h1,
+:where(:root:not([data-light-panel-theme])) body .dashboard-title,
+:where(:root:not([data-light-panel-theme])) body .metric-card strong,
+:where(:root:not([data-light-panel-theme])) body .detail-empty strong,
+:where(:root:not([data-light-panel-theme])) body .stat-small strong,
+:where(:root:not([data-light-panel-theme])) body .plan-card.featured {
+  color: var(--panel-text);
+}
+
+:where(:root:not([data-light-panel-theme])) body .dash-card p,
+:where(:root:not([data-light-panel-theme])) body .detail-heading p,
+:where(:root:not([data-light-panel-theme])) body .detail-empty p,
+:where(:root:not([data-light-panel-theme])) body .profile-security p,
+:where(:root:not([data-light-panel-theme])) body .detail-view .plan-card p,
+:where(:root:not([data-light-panel-theme])) body .featured .price span,
+:where(:root:not([data-light-panel-theme])) body .rule-row span,
+:where(:root:not([data-light-panel-theme])) body .dash-kicker,
+:where(:root:not([data-light-panel-theme])) body .dash-card-head .dash-kicker,
+:where(:root:not([data-light-panel-theme])) body .metric-label,
+:where(:root:not([data-light-panel-theme])) body .detail-section-title span,
+:where(:root:not([data-light-panel-theme])) body .dashboard-note,
+:where(:root:not([data-light-panel-theme])) body .plan p,
+:where(:root:not([data-light-panel-theme])) body .topbar-label,
+:where(:root:not([data-light-panel-theme])) body .preview-pill,
+:where(:root:not([data-light-panel-theme])) body .overline,
+:where(:root:not([data-light-panel-theme])) body .small-tag,
+:where(:root:not([data-light-panel-theme])) body .feature p,
+:where(:root:not([data-light-panel-theme])) body .calendar-day,
+:where(:root:not([data-light-panel-theme])) body .service-tile small,
+:where(:root:not([data-light-panel-theme])) body .stat-small span {
+  color: var(--panel-muted);
+}
+
+:where(:root:not([data-light-panel-theme])) body .feature-tag,
+:where(:root:not([data-light-panel-theme])) body .dash-text-link,
+:where(:root:not([data-light-panel-theme])) body .text-link {
+  color: var(--panel-accent);
+}
+:where(:root:not([data-light-panel-theme])) body .preview-pill span {
+  background: var(--panel-accent);
+}
+
+:where(:root:not([data-light-panel-theme])) body .top-tabs,
+:where(:root:not([data-light-panel-theme])) body .empty,
+:where(:root:not([data-light-panel-theme])) body .empty-state,
+:where(:root:not([data-light-panel-theme])) body .detail-list .empty-state,
+:where(:root:not([data-light-panel-theme])) body .detail-empty,
+:where(:root:not([data-light-panel-theme])) body .detail-list .booking-item,
+:where(:root:not([data-light-panel-theme])) body .booking-item,
+:where(:root:not([data-light-panel-theme])) body .list-row,
+:where(:root:not([data-light-panel-theme])) body .notice-entry,
+:where(:root:not([data-light-panel-theme])) body .notice-card,
+:where(:root:not([data-light-panel-theme])) body .stat-small span,
+:where(:root:not([data-light-panel-theme])) body .service-tile {
+  background: var(--panel-inset);
+  border-color: var(--panel-line);
+  color: var(--panel-text);
+}
+
+:where(:root:not([data-light-panel-theme])) body .service-tile {
+  border: 1px solid var(--panel-line);
+}
+:where(:root:not([data-light-panel-theme])) body .service-tile:hover:not(:disabled) {
+  background: var(--panel-hover);
+}
+:where(:root:not([data-light-panel-theme])) body .detail-view .plan-card li,
+:where(:root:not([data-light-panel-theme])) body .rule-row {
+  border-color: var(--panel-line);
+}
+
+:where(:root:not([data-light-panel-theme])) body .avatar,
+:where(:root:not([data-light-panel-theme])) body .row-icon,
+:where(:root:not([data-light-panel-theme])) body .service-symbol,
+:where(:root:not([data-light-panel-theme])) body .detail-hero .detail-icon,
+:where(:root:not([data-light-panel-theme])) body .profile-intro .detail-icon,
+:where(:root:not([data-light-panel-theme])) body .plan-overview .detail-icon,
+:where(:root:not([data-light-panel-theme])) body .notice-entry .notice-icon {
+  color: var(--panel-accent);
+  background: var(--panel-tint);
+  border-color: var(--panel-line);
+}
+
+:where(:root:not([data-light-panel-theme])) body .button,
+:where(:root:not([data-light-panel-theme])) body .button.dark,
+:where(:root:not([data-light-panel-theme])) body .button-dark,
+:where(:root:not([data-light-panel-theme])) body .dash-button,
+:where(:root:not([data-light-panel-theme])) body .plan-card.featured .button-light,
+:where(:root:not([data-light-panel-theme])) body .booking-actions button,
+:where(:root:not([data-light-panel-theme])) body .row-actions button,
+:where(:root:not([data-light-panel-theme])) body .quick > button,
+:where(:root:not([data-light-panel-theme])) body .icon-link,
+:where(:root:not([data-light-panel-theme])) body .dash-card-head button,
+:where(:root:not([data-light-panel-theme])) body .notification-trigger {
+  color: var(--panel-text);
+  background: var(--panel-inset);
+  border: 1px solid var(--panel-control);
+}
+
+:where(:root:not([data-light-panel-theme])) body .top-tab {
+  color: var(--panel-muted);
+}
+:where(:root:not([data-light-panel-theme])) body .sidebar .nav-item:hover,
+:where(:root:not([data-light-panel-theme])) body .nav-button:hover,
+:where(:root:not([data-light-panel-theme])) body .exit-link:hover,
+:where(:root:not([data-light-panel-theme])) body .top-tab:hover,
+:where(:root:not([data-light-panel-theme])) body .button:hover,
+:where(:root:not([data-light-panel-theme])) body .button.dark:hover,
+:where(:root:not([data-light-panel-theme])) body .button-dark:hover,
+:where(:root:not([data-light-panel-theme])) body .dash-button:hover,
+:where(:root:not([data-light-panel-theme])) body .plan-card.featured .button-light:hover,
+:where(:root:not([data-light-panel-theme])) body .plan-card .button-outline:hover,
+:where(:root:not([data-light-panel-theme])) body .booking-actions button:hover,
+:where(:root:not([data-light-panel-theme])) body .row-actions button:hover,
+:where(:root:not([data-light-panel-theme])) body .quick > button:hover,
+:where(:root:not([data-light-panel-theme])) body .icon-link:hover,
+:where(:root:not([data-light-panel-theme])) body .dash-card-head button:hover,
+:where(:root:not([data-light-panel-theme])) body .notification-trigger:hover,
+:where(:root:not([data-light-panel-theme])) body .calendar-day:hover:not(:disabled):not(.is-today) {
+  color: var(--panel-text);
+  background: var(--panel-hover);
+  border-color: var(--panel-muted);
+}
+
+:where(:root:not([data-light-panel-theme])) body .sidebar .brand,
+:where(:root:not([data-light-panel-theme])) body .brand,
+:where(:root:not([data-light-panel-theme])) body .side-nav .nav-item.is-active,
+:where(:root:not([data-light-panel-theme])) body .side-nav .nav-item.is-active:hover,
+:where(:root:not([data-light-panel-theme])) body .nav-button.active,
+:where(:root:not([data-light-panel-theme])) body .nav-button.active:hover,
+:where(:root:not([data-light-panel-theme])) body .top-tab.is-active,
+:where(:root:not([data-light-panel-theme])) body .calendar-day.is-today,
+:where(:root:not([data-light-panel-theme])) body .calendar-day.is-today:hover {
+  color: var(--panel-base);
+  background: var(--panel-text);
+}
+
+:where(:root:not([data-light-panel-theme])) body .icon-arrow,
+:where(:root:not([data-light-panel-theme])) body .top-bell,
+:where(:root:not([data-light-panel-theme])) body .mobile-menu img,
+:where(:root:not([data-light-panel-theme])) body .close-button img,
+:where(:root:not([data-light-panel-theme])) body .quick > button img,
+:where(:root:not([data-light-panel-theme])) body .detail-rules img,
+:where(:root:not([data-light-panel-theme])) body .plan-explainer img,
+:where(:root:not([data-light-panel-theme])) body .profile-security img,
+:where(:root:not([data-light-panel-theme])) body .detail-empty img,
+:where(:root:not([data-light-panel-theme])) body .notice-icon img,
+:where(:root:not([data-light-panel-theme])) body .empty img,
+:where(:root:not([data-light-panel-theme])) body .empty-panel img,
+:where(:root:not([data-light-panel-theme])) body .nav-item .nav-icon {
+  filter: brightness(0) invert(1);
+}
+
+:where(:root:not([data-light-panel-theme])) body .nav-item.is-active .nav-icon {
+  filter: brightness(0);
+}
+
+:where(:root:not([data-light-panel-theme])) body .sidebar :is(.nav-item, .nav-button, .exit-link) {
+  color: var(--panel-text);
+}
+
+:where(:root:not([data-light-panel-theme]))
+  body
+  .sidebar
+  :is(.nav-item, .nav-button, .exit-link):hover {
+  background: var(--panel-sidebar-hover);
+}
+
+:where(:root:not([data-light-panel-theme]))
+  body
+  .sidebar
+  :is(.nav-item.is-active, .nav-button.active),
+:where(:root:not([data-light-panel-theme]))
+  body
+  .sidebar
+  :is(.nav-item.is-active, .nav-button.active):hover {
+  background: var(--panel-sidebar-active);
+  color: var(--panel-sidebar-active-text);
+}
+
+:where(:root:not([data-light-panel-theme])) body .sidebar .nav-label {
+  color: inherit;
+}
+
+:where(:root:not([data-light-panel-theme]))
+  body
+  .sidebar
+  :is(.brand, .nav-item, .nav-button, .exit-link):focus-visible {
+  outline-color: var(--panel-text);
+}
+
+:where(:root:not([data-light-panel-theme])) body dialog,
+:where(:root:not([data-light-panel-theme])) body .booking-dialog,
+:where(:root:not([data-light-panel-theme])) body .toast {
+  color: var(--panel-text);
+  background: var(--panel-surface);
+  border: 1px solid var(--panel-line);
+  box-shadow:
+    inset 0 1px 0 #ffffff12,
+    0 18px 42px #0008;
+}
+
+:where(:root:not([data-light-panel-theme])) body dialog::backdrop {
+  background: #000b;
+}
+:where(:root:not([data-light-panel-theme])) body input:not([type='checkbox']),
+:where(:root:not([data-light-panel-theme])) body select,
+:where(:root:not([data-light-panel-theme])) body textarea,
+:where(:root:not([data-light-panel-theme])) body .profile-form input,
+:where(:root:not([data-light-panel-theme])) body .booking-dialog input,
+:where(:root:not([data-light-panel-theme])) body .booking-dialog select,
+:where(:root:not([data-light-panel-theme])) body #dialog-fields :is(input, select, textarea) {
+  color: var(--panel-text);
+  background: var(--panel-base);
+  border-color: var(--panel-control);
+}
+
+:where(:root:not([data-light-panel-theme])) body input::placeholder {
+  color: var(--panel-muted);
+}
+:where(:root:not([data-light-panel-theme])) body .profile-form input:disabled {
+  color: var(--panel-muted);
+  background: var(--panel-inset);
+}
+:where(:root:not([data-light-panel-theme])) body .status {
+  color: var(--panel-accent);
+  background: var(--panel-tint);
+}
+:where(:root:not([data-light-panel-theme])) body .status.done {
+  color: #d9f0e2;
+  background: #23332c;
+}
+:where(:root:not([data-light-panel-theme])) body .status.suspended {
+  color: var(--panel-error);
+  background: #3a2630;
+}
+:where(:root:not([data-light-panel-theme])) body .form-error {
+  color: var(--panel-error) !important;
+}
+:where(:root:not([data-light-panel-theme]))
+  body
+  :is(button, a, input, select, textarea):focus-visible,
+:where(:root:not([data-light-panel-theme])) body #dialog-fields textarea:focus-visible {
+  outline: 2px solid var(--panel-accent);
+  outline-offset: 3px;
+}
+
+:root[data-light-panel-theme] {
+  color-scheme: light;
+}
+
+/* No modo claro, a equipe usa a mesma paleta do cliente. */
+:root[data-light-panel-theme]:is([data-panel-role='barbeiro'], [data-panel-role='administrador']) {
+  --paper: #f3f2ef;
+  --ink: #11100e;
+  --muted: #635f58;
+  --line: #d8d5cf;
+  --navy: #06174b;
+  --staff-card: #fff;
+  --staff-card-line: #e4e0d8;
+  --staff-inset: #f8f7f4;
+  --staff-field-line: #c9c5bc;
+  --staff-accent-soft: #e5e9f1;
+  --staff-accent-hover: #142b71;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+:where(
+  :root[data-light-panel-theme]:is([data-panel-role='barbeiro'], [data-panel-role='administrador'])
+) {
+  & .card {
+    background: var(--staff-card);
+    border-color: var(--staff-card-line);
+    box-shadow: 0 3px 14px #11100e0b;
+  }
+
+  & .card.feature {
+    background: linear-gradient(112deg, #efebdc 0%, #e9e6dd 58%, #d8d3c2 100%);
+  }
+
+  & .feature-art i {
+    background: linear-gradient(130deg, #f7f5ee 6%, #aeb6c9 42%, #06174b 85%, #dce1ed 100%);
+    box-shadow:
+      inset 7px 8px 13px #fff9,
+      inset -10px -12px 18px #06174b33,
+      0 11px 12px #06174b26;
+  }
+
+  & :is(.metric.pale, .plan.highlighted) {
+    background: var(--staff-accent-soft);
+  }
+  & :is(.feature p, .plan p, .dashboard-note, .overline) {
+    color: var(--muted);
+  }
+
+  & :is(.row-icon, .status) {
+    background: var(--staff-accent-soft);
+    color: var(--navy);
+  }
+  & :is(.status.done, .status.suspended) {
+    font-weight: 600;
+  }
+  & .status.done {
+    color: #2b6530;
+    background: #e1f2e0;
+  }
+  & .status.suspended {
+    color: #71470c;
+    background: #f9edda;
+  }
+
+  & :is(.button, .icon-link) {
+    background: var(--staff-card);
+    border-color: var(--line);
+    color: var(--navy);
+  }
+
+  & .button.dark {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+  & .button.dark:hover {
+    background: var(--staff-accent-hover);
+    border-color: var(--staff-accent-hover);
+  }
+  & :is(.button:not(.dark), .icon-link):hover {
+    background: var(--paper);
+    color: var(--navy);
+    border-color: var(--staff-field-line);
+  }
+
+  & :is(.quick > button, .row-actions button, .empty) {
+    background: var(--staff-inset);
+    border-color: var(--staff-card-line);
+  }
+
+  & :is(.quick > button, .row-actions button):hover {
+    background: var(--staff-accent-soft);
+  }
+
+  & :is(.section-card input, #dialog-fields input, #dialog-fields select, #dialog-fields textarea) {
+    background: var(--staff-card);
+    border-color: var(--staff-field-line);
+  }
+
+  & dialog {
+    background: var(--paper);
+    border-color: var(--line);
+  }
+}
+
+.panel-appearance-card {
+  margin-bottom: 16px;
+  padding: clamp(16px, 3vw, 28px);
+}
+.panel-mode-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 10px;
+  padding: 0;
+  margin: 12px 0 0;
+  border: 0;
+}
+.panel-mode-options legend {
+  margin-bottom: 8px;
+  color: var(--panel-muted, #53505a);
+}
+.panel-mode-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 12px;
+  background: var(--panel-inset, #f3f2ef);
+  border: 1px solid var(--panel-control, #76727c);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.panel-mode-options label:has(:checked) {
+  border-color: var(--panel-accent, #242428);
+}
+.panel-mode-options input[type='radio'] {
+  accent-color: var(--panel-accent, #242428);
+}
+[data-panel-mode-status]:empty {
+  display: none;
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+  }
+  body,
+  body #view-relatorios .card {
+    color: #111;
+    background: #fff;
+    box-shadow: none;
+  }
+}

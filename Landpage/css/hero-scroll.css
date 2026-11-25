@@ -1,0 +1,39 @@
+.site.street {
+  overflow: clip;
+}
+.street .site-hero {
+  overflow: visible;
+}
+.street .site-hero.hero-scroll-active {
+  height: 280vh;
+  height: 280svh;
+}
+.hero-scroll-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #292929;
+  isolation: isolate;
+}
+.hero-scroll-stage > .hero-wallpaper,
+.hero-scroll-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-scroll-stage > .hero-wallpaper {
+  animation: none;
+  transform: none;
+  filter: none;
+}
+.hero-scroll-canvas {
+  opacity: 0;
+}
+.hero-scroll-stage .hero-title {
+  z-index: 2;
+}

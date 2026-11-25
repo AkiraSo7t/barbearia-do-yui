@@ -1,0 +1,25 @@
+/* Espaçamento do formulário com os novos dados de cadastro. */
+.glass-panel {
+  width: min(100%, 390px);
+}
+.fields {
+  gap: 9px;
+}
+.field-error {
+  margin-top: -5px;
+  font-size: 12px;
+}
+@media (max-height: 760px) {
+  .login-stage {
+    padding-top: 80px;
+    padding-bottom: 24px;
+  }
+  .glass-panel {
+    margin-block: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .glass-panel {
+    width: min(100%, 390px);
+  }
+}

@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap');
+
+/* Hero editorial: imagem centralizada e tipografia do próprio site. */
+.street .site-hero {
+  position: relative;
+  isolation: isolate;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  max-height: none;
+  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+  background: #444;
+}
+
+.street .site-hero > .hero-wallpaper {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(1px);
+  transform: scale(1.012);
+}
+
+.hero-title {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 1rem;
+  font:
+    700 clamp(2.2rem, 10.5vw, 10.5rem) / 1 'Barlow Condensed',
+    sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  color: #fff;
+  perspective: 700px;
+  pointer-events: none;
+}
+
+.hero-flip-line {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.18em;
+  white-space: nowrap;
+}
+.hero-flip-line:not(:first-child) {
+  opacity: 0;
+  visibility: hidden;
+}
+.hero-flip-word {
+  display: block;
+  background: linear-gradient(
+    170deg,
+    rgb(249 250 251 / 55%) 8%,
+    rgb(157 163 170 / 55%) 27%,
+    rgb(255 255 255 / 55%) 43%,
+    rgb(114 121 128 / 55%) 57%,
+    rgb(229 232 235 / 55%) 76%,
+    rgb(174 180 186 / 55%) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  transform-origin: center center;
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: clamp(1.6rem, 8.2vw, 3.4rem);
+    perspective: 500px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-wallpaper {
+    animation: hero-image-enter 1800ms ease-out both;
+  }
+}
+
+@keyframes hero-image-enter {
+  from {
+    opacity: 0.65;
+    transform: scale(1.055);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.012);
+  }
+}
+
+@media (forced-colors: active) {
+  .hero-title {
+    color: CanvasText;
+  }
+  .hero-flip-word {
+    background: none;
+    -webkit-text-fill-color: CanvasText;
+    color: CanvasText;
+  }
+}

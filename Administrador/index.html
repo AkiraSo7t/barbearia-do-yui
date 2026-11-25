@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="pt-BR" data-panel-role="administrador" data-light-panel-theme>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Administração — GUREN</title>
+    <meta name="description" content="Prévia do painel administrativo GUREN." />
+    <link rel="stylesheet" href="../assets/staff-panel.css" />
+    <link rel="stylesheet" href="admin.css?v=7" />
+    <link rel="stylesheet" href="../assets/panel-theme.css?v=9" />
+    <script src="../assets/api.js?v=panel-session-1" defer></script>
+    <script src="../assets/panel-theme.js?v=api-1" defer></script>
+    <script src="../assets/agenda-rules.js?v=api-1" defer></script>
+    <script src="../assets/staff-panel.js?v=staff-pix-1" defer></script>
+    <script src="../assets/preview-catalog.js?v=api-1" defer></script>
+    <script src="relatorio.js" defer></script>
+    <script src="admin.js?v=api-1" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <!-- Navegação do painel. -->
+      <aside class="sidebar" id="sidebar" aria-label="Menu do administrador">
+        <a class="brand" href="../Landpage/index.html" aria-label="GUREN, voltar ao site">G</a>
+        <nav class="side-nav" aria-label="Seções">
+          <button
+            class="nav-button active"
+            data-view="inicio"
+            aria-label="Visão geral"
+            title="Visão geral"
+          >
+            <img src="../User/assets/icons/house.svg" alt="" />
+          </button>
+          <button class="nav-button" data-view="agenda" aria-label="Agenda" title="Agenda">
+            <img src="../User/assets/icons/calendar-days.svg" alt="" />
+          </button>
+          <button class="nav-button" data-view="clientes" aria-label="Clientes" title="Clientes">
+            <img src="../User/assets/icons/user-round.svg" alt="" />
+          </button>
+          <button class="nav-button" data-view="servicos" aria-label="Serviços" title="Serviços">
+            <img src="../User/assets/icons/sparkles.svg" alt="" />
+          </button>
+          <button class="nav-button" data-view="planos" aria-label="Planos" title="Planos">
+            <img src="../User/assets/icons/badge-check.svg" alt="" />
+          </button>
+          <button
+            class="nav-button"
+            data-view="pagamentos"
+            aria-label="Pagamentos"
+            title="Pagamentos"
+          >
+            <img src="../User/assets/icons/credit-card.svg" alt="" />
+          </button>
+          <button
+            class="nav-button"
+            data-view="relatorios"
+            aria-label="Relatórios"
+            title="Relatórios"
+          >
+            <img src="../User/assets/icons/notebook-tabs.svg" alt="" />
+          </button>
+          <button class="nav-button" data-view="termos" aria-label="Termos" title="Termos">
+            <img src="../User/assets/icons/scroll-text.svg" alt="" />
+          </button>
+          <button
+            class="nav-button"
+            data-view="configuracoes"
+            aria-label="Configurações"
+            title="Configurações"
+          >
+            <img src="../User/assets/icons/settings.svg" alt="" />
+          </button>
+        </nav>
+      </aside>
+      <!-- Conteúdo principal. -->
+      <main class="main">
+        <div class="content">
+          <section class="view shown" id="view-inicio">
+            <div class="page-heading">
+              <div>
+                <h1>Visão da barbearia.</h1>
+                <p>Acompanhe as operações em um só lugar.</p>
+              </div>
+              <button class="button dark" data-action="booking">
+                Novo agendamento <span>↗</span>
+              </button>
+            </div>
+            <div class="dashboard-grid">
+              <article class="card feature">
+                <div>
+                  <h2>Tudo em ordem.<br />Todo dia.</h2>
+                  <p>Equipe, agenda e serviços organizados para atender melhor.</p>
+                  <button class="button dark" data-view="agenda">Ver agenda <span>↗</span></button>
+                </div>
+                <div class="feature-art" aria-hidden="true"><i></i><i></i><i></i></div>
+              </article>
+              <article class="card today">
+                <div class="card-head">
+                  <h2 id="today-label">Hoje</h2>
+                  <button class="icon-link" data-view="agenda" aria-label="Ver agenda">↗</button>
+                </div>
+                <div class="big-number" id="today-count">0</div>
+                <p>agendamentos na prévia</p>
+                <div class="hairline"></div>
+                <div class="today-bottom">
+                  <span>Próximo horário</span><strong id="next-appointment">Agenda livre</strong>
+                </div>
+              </article>
+              <article class="card metric">
+                <div class="card-head">
+                  <h2>Clientes</h2>
+                  <button class="icon-link" data-view="clientes" aria-label="Ver clientes">
+                    ↗
+                  </button>
+                </div>
+                <strong id="client-count">0</strong>
+                <p>contas na lista</p>
+              </article>
+              <article class="card metric pale">
+                <div class="card-head">
+                  <h2>Atendimentos</h2>
+                  <button
+                    class="icon-link"
+                    data-view="relatorios"
+                    aria-label="Ver relatório de atendimentos"
+                  >
+                    ↗
+                  </button>
+                </div>
+                <strong id="attendance-count">0</strong>
+                <p>serviços realizados</p>
+              </article>
+              <article class="card quick">
+                <div class="card-head">
+                  <h2>Acesso rápido</h2>
+                </div>
+                <button data-action="booking">
+                  <img src="../User/assets/icons/plus.svg" alt="" /> Agendar horário
+                  <span>↗</span></button
+                ><button data-action="block">
+                  <img src="../User/assets/icons/calendar-check.svg" alt="" /> Bloquear horário
+                  <span>↗</span></button
+                ><button data-view="servicos">
+                  <img src="../User/assets/icons/sparkles.svg" alt="" /> Ver serviços
+                  <span>↗</span>
+                </button>
+              </article>
+            </div>
+            <p class="dashboard-note">
+              Prévia local. Agendamentos e atendimentos duram apenas nesta sessão.
+            </p>
+          </section>
+          <section class="view" id="view-agenda">
+            <div class="page-heading">
+              <div>
+                <h1>Agenda</h1>
+                <p>Acompanhe os horários, os atendimentos e as faltas.</p>
+              </div>
+              <button class="button dark" data-action="booking">
+                Novo agendamento <span>↗</span>
+              </button>
+            </div>
+            <div class="two-col">
+              <article class="card section-card">
+                <div class="card-head">
+                  <h2>Agendamentos</h2>
+                  <input type="date" id="agenda-date" aria-label="Filtrar agenda por data" />
+                </div>
+                <div class="item-list" id="agenda-list"></div>
+              </article>
+              <article class="card info-card">
+                <h2>Funcionamento</h2>
+                <div class="info-row">
+                  <strong>Dias</strong><span>Segunda a sábado, exceto no Natal</span>
+                </div>
+                <div class="info-row"><strong>Atendimento</strong><span>07h às 20h</span></div>
+                <div class="info-row"><strong>Intervalo</strong><span>12h às 13h</span></div>
+                <div class="info-row">
+                  <strong>Tolerância de atraso</strong><span>10 minutos</span>
+                </div>
+              </article>
+            </div>
+            <article class="card section-card schedule-blocks">
+              <div class="card-head">
+                <h2>Horários indisponíveis</h2>
+                <button class="button" data-action="block">Bloquear horário</button>
+              </div>
+              <div class="item-list" id="block-list"></div>
+            </article>
+          </section>
+          <section class="view" id="view-clientes">
+            <div class="page-heading">
+              <div>
+                <h1 id="clients-heading" tabindex="-1">Clientes</h1>
+                <p>Consulte o plano e as faltas de cada cliente e gerencie o acesso à conta.</p>
+              </div>
+            </div>
+            <article class="card section-card">
+              <div class="card-head"><h2>Lista de clientes</h2></div>
+              <ul
+                class="item-list client-list"
+                id="client-list"
+                aria-label="Contas de clientes"
+              ></ul>
+            </article>
+          </section>
+          <section class="view" id="view-servicos">
+            <div class="page-heading">
+              <div>
+                <h1>Serviços</h1>
+                <p>Defina quais serviços estão disponíveis para agendamento.</p>
+              </div>
+              <button class="button dark" data-action="service">
+                Novo serviço <span>↗</span>
+              </button>
+            </div>
+            <article class="card section-card">
+              <div class="card-head">
+                <h2>Catálogo</h2>
+              </div>
+              <div class="item-list" id="service-list"></div>
+            </article>
+          </section>
+          <section class="view" id="view-planos">
+            <div class="page-heading">
+              <div>
+                <h1>Planos</h1>
+                <p>Configure o preço mensal e o que está incluído em cada plano.</p>
+              </div>
+              <button class="button dark" type="button" id="new-plan">Criar plano</button>
+            </div>
+            <div class="plan-grid" id="plan-grid">
+              <article class="card plan" data-plan="basico" data-price-cents="13000">
+                <h2>Básico</h2>
+                <strong><span data-price>R$ 130,00</span> <small>/ mês</small></strong>
+                <p data-benefits>Cabelo e barba, uma vez por semana.</p>
+                <button
+                  class="button"
+                  type="button"
+                  data-edit-plan
+                  aria-label="Editar plano Básico"
+                >
+                  Editar plano
+                </button>
+              </article>
+              <article
+                class="card plan highlighted"
+                data-plan="intermediario"
+                data-price-cents="15000"
+              >
+                <h2>Intermediário</h2>
+                <strong><span data-price>R$ 150,00</span> <small>/ mês</small></strong>
+                <p data-benefits>Cabelo, barba e sobrancelha ou pigmentação, uma vez por semana.</p>
+                <button
+                  class="button"
+                  type="button"
+                  data-edit-plan
+                  aria-label="Editar plano Intermediário"
+                >
+                  Editar plano
+                </button>
+              </article>
+              <article class="card plan" data-plan="completo" data-price-cents="20000">
+                <h2>Completo</h2>
+                <strong><span data-price>R$ 200,00</span> <small>/ mês</small></strong>
+                <p data-benefits>Os quatro serviços, com uso ilimitado durante a validade.</p>
+                <button
+                  class="button"
+                  type="button"
+                  data-edit-plan
+                  aria-label="Editar plano Completo"
+                >
+                  Editar plano
+                </button>
+              </article>
+            </div>
+            <p class="dashboard-note">
+              As alterações dos planos ficam salvas neste navegador, na prévia administrativa.
+            </p>
+          </section>
+          <section class="view" id="view-pagamentos">
+            <div class="page-heading">
+              <div>
+                <h1>Pagamentos</h1>
+                <p>Acompanhe as cobranças Pix dos planos.</p>
+              </div>
+            </div>
+            <article class="card">
+              <div class="card-head">
+                <h2>Cobranças Pix</h2>
+                <button class="button" type="button" id="staff-payment-refresh">Atualizar</button>
+              </div>
+              <p id="staff-payment-feedback" role="status"></p>
+              <div class="item-list" id="staff-payment-list"></div>
+            </article>
+          </section>
+          <section class="view" id="view-relatorios">
+            <div class="page-heading">
+              <div>
+                <h1>Relatório semanal</h1>
+                <p>Consulte os serviços realizados em uma semana.</p>
+              </div>
+              <button class="button dark" id="print-report" type="button">
+                Salvar em PDF <span>↗</span>
+              </button>
+            </div>
+            <article class="card section-card">
+              <div class="card-head">
+                <h2>Atendimentos por serviço</h2>
+                <label>Data de referência <input type="date" id="report-date" /></label>
+              </div>
+              <p id="report-period"></p>
+              <dl id="report-totals"></dl>
+              <p>
+                Receita e aceites aguardam integração. O cálculo do lucro depende da definição dos
+                custos.
+              </p>
+              <h2>Atendimentos realizados</h2>
+              <ul id="report-attendance"></ul>
+            </article>
+          </section>
+          <section class="view" id="view-termos">
+            <div class="page-heading">
+              <div>
+                <h1>Termos</h1>
+                <p>Consulte cliente, versão e data de aceite do termo de pigmentação.</p>
+              </div>
+            </div>
+            <article class="card empty-panel">
+              <img src="../User/assets/icons/scroll-text.svg" alt="" />
+              <h2>Nenhum aceite disponível</h2>
+              <p>
+                Os registros dependem da publicação do termo oficial e de aceites vinculados às
+                contas dos clientes.
+              </p>
+            </article>
+          </section>
+          <section class="view" id="view-configuracoes">
+            <div class="page-heading">
+              <div>
+                <h1>Configurações</h1>
+                <p>Consulte as regras da operação e acesse os ajustes disponíveis.</p>
+              </div>
+            </div>
+            <div data-panel-color-editor></div>
+            <div class="two-col">
+              <article class="card info-card">
+                <h2>Regras da operação</h2>
+                <div class="info-row">
+                  <strong>Funcionamento</strong
+                  ><span>Segunda a sábado · 07h às 20h · fechado no Natal</span>
+                </div>
+                <div class="info-row"><strong>Intervalo</strong><span>12h às 13h</span></div>
+                <div class="info-row">
+                  <strong>Remarcação pelo cliente</strong><span>5 horas de antecedência</span>
+                </div>
+                <div class="info-row">
+                  <strong>Cancelamento pelo cliente</strong><span>Até um dia antes</span>
+                </div>
+                <div class="info-row">
+                  <strong>Tolerância de atraso</strong><span>10 minutos</span>
+                </div>
+                <div class="info-row">
+                  <strong>Impedimento de novas reservas</strong><span>4 faltas consecutivas</span>
+                </div>
+              </article>
+              <article class="card quick">
+                <div class="card-head"><h2>Ajustes</h2></div>
+                <button type="button" data-view="agenda">
+                  Disponibilidade e bloqueios <span>↗</span>
+                </button>
+                <button type="button" data-view="servicos">
+                  Catálogo de serviços <span>↗</span>
+                </button>
+                <button type="button" data-view="planos">
+                  Planos e benefícios <span>↗</span>
+                </button>
+              </article>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <template id="custom-plan-card">
+      <article class="card plan">
+        <h2></h2>
+        <strong><span data-price></span> <small>/ mês</small></strong>
+        <p data-benefits></p>
+        <button class="button" type="button" data-edit-plan>Editar plano</button>
+      </article>
+    </template>
+    <!-- Janela de interação. -->
+    <dialog id="editor" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+      <form id="editor-form">
+        <div class="dialog-head">
+          <span class="overline">GUREN</span
+          ><button type="button" id="close-dialog" aria-label="Fechar">×</button>
+        </div>
+        <h2 id="dialog-title">Novo cadastro</h2>
+        <p id="dialog-description">Os dados serão salvos no sistema.</p>
+        <div id="dialog-fields"></div>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <button class="button dark full" type="submit">Salvar dados <span>↗</span></button>
+      </form>
+    </dialog>
+    <template id="client-row">
+      <li class="list-row client-row">
+        <div class="row-copy">
+          <strong data-client-name></strong><small data-client-user></small>
+        </div>
+        <div class="client-plan"><small>Plano</small><strong data-client-plan></strong></div>
+        <div class="client-absences">
+          <small>Faltas consecutivas</small><strong data-client-absences></strong>
+        </div>
+        <div class="client-status"><span class="status" data-client-status></span></div>
+        <div class="row-actions">
+          <button type="button" data-client-action="edit">Editar dados</button>
+          <button type="button" data-client-action="plan">Alterar plano</button>
+          <button type="button" data-client-action="block">Bloquear</button>
+          <button type="button" data-client-action="delete">Excluir</button>
+        </div>
+      </li>
+    </template>
+    <!-- Janela de interação. -->
+    <dialog
+      id="client-dialog"
+      aria-labelledby="client-dialog-title"
+      aria-describedby="client-dialog-description"
+    >
+      <form id="client-action-form">
+        <h2 id="client-dialog-title"></h2>
+        <p id="client-dialog-description"></p>
+        <div class="client-dialog-actions">
+          <button class="button" id="cancel-client-action" type="button">Voltar</button>
+          <button class="button dark" id="confirm-client-action" type="submit"></button>
+        </div>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

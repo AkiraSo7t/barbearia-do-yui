@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-BR" data-panel-role="barbeiro" data-light-panel-theme>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Área do barbeiro — GUREN</title>
+    <meta name="description" content="Prévia da área do barbeiro GUREN." />
+    <link rel="stylesheet" href="../assets/staff-panel.css" />
+    <link rel="stylesheet" href="../assets/panel-theme.css?v=9" />
+    <link rel="stylesheet" href="../assets/demo-clock.css" />
+    <script src="../assets/api.js?v=panel-session-1" defer></script>
+    <script src="../assets/demo-clock.js" defer></script>
+    <script src="../assets/panel-theme.js?v=api-1" defer></script>
+    <script src="../assets/agenda-rules.js?v=api-1" defer></script>
+    <script src="../assets/staff-panel.js?v=staff-pix-1" defer></script>
+    <script src="../assets/preview-catalog.js?v=api-1" defer></script>
+    <script src="barber.js?v=clients-read-1" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <!-- Navegação do painel. -->
+      <aside class="sidebar" id="sidebar" aria-label="Menu do barbeiro">
+        <a class="brand" href="../Landpage/index.html" aria-label="GUREN, voltar ao site">G</a>
+        <nav class="side-nav" aria-label="Seções">
+          <button
+            class="nav-button active"
+            data-view="inicio"
+            aria-label="Visão geral"
+            title="Visão geral"
+          >
+            <img src="../User/assets/icons/house.svg" alt="" />
+          </button>
+          <button class="nav-button" data-view="agenda" aria-label="Agenda" title="Agenda">
+            <img src="../User/assets/icons/calendar-days.svg" alt="" />
+          </button>
+          <button class="nav-button" data-view="clientes" aria-label="Clientes" title="Clientes">
+            <img src="../User/assets/icons/user-round.svg" alt="" />
+          </button>
+          <button
+            class="nav-button"
+            data-view="atendimentos"
+            aria-label="Atendimentos"
+            title="Atendimentos"
+          >
+            <img src="../User/assets/icons/scissors.svg" alt="" />
+          </button>
+          <button class="nav-button" data-view="horarios" aria-label="Horários" title="Horários">
+            <img src="../User/assets/icons/calendar-check.svg" alt="" />
+          </button>
+          <button
+            class="nav-button"
+            data-view="pagamentos"
+            aria-label="Pagamentos"
+            title="Pagamentos"
+          >
+            <img src="../User/assets/icons/credit-card.svg" alt="" />
+          </button>
+          <button class="nav-button" data-view="termos" aria-label="Termos" title="Termos">
+            <img src="../User/assets/icons/scroll-text.svg" alt="" />
+          </button>
+          <button
+            type="button"
+            class="nav-button"
+            data-view="configuracoes"
+            aria-label="Configurações"
+            title="Configurações"
+          >
+            <img src="../User/assets/icons/settings.svg" alt="" />
+          </button>
+        </nav>
+      </aside>
+      <!-- Conteúdo principal. -->
+      <main class="main">
+        <div class="content">
+          <section class="view shown" id="view-inicio">
+            <div class="page-heading">
+              <div>
+                <h1>Bom trabalho começa aqui.</h1>
+                <p>Organize sua agenda e acompanhe os atendimentos do dia.</p>
+              </div>
+              <button class="button dark" data-action="booking">
+                Novo horário <span>↗</span>
+              </button>
+            </div>
+            <div class="dashboard-grid">
+              <article class="card feature">
+                <div>
+                  <h2>Seu dia, no<br />seu ritmo.</h2>
+                  <p>Veja os horários e prepare cada atendimento.</p>
+                  <button class="button dark" data-view="agenda">
+                    Abrir agenda <span>↗</span>
+                  </button>
+                </div>
+                <div class="feature-art" aria-hidden="true"><i></i><i></i><i></i></div>
+              </article>
+              <article class="card today">
+                <div class="card-head">
+                  <h2 id="today-label">Hoje</h2>
+                  <button class="icon-link" data-view="agenda" aria-label="Ver agenda">↗</button>
+                </div>
+                <div class="big-number" id="today-count">0</div>
+                <p>agendamentos futuros</p>
+                <div class="hairline"></div>
+                <div class="today-bottom">
+                  <span>Próximo horário</span><strong id="next-appointment">Agenda livre</strong>
+                </div>
+              </article>
+              <article class="card metric">
+                <div class="card-head">
+                  <h2>Atendimentos</h2>
+                  <button class="icon-link" data-view="atendimentos" aria-label="Ver atendimentos">
+                    ↗
+                  </button>
+                </div>
+                <strong id="served-count">0</strong>
+                <p>concluídos nesta sessão</p>
+              </article>
+              <article class="card metric pale">
+                <div class="card-head">
+                  <h2>Clientes</h2>
+                  <button class="icon-link" data-view="clientes" aria-label="Ver clientes">
+                    ↗
+                  </button>
+                </div>
+                <strong id="client-count">0</strong>
+                <p>adicionados à prévia</p>
+              </article>
+              <article class="card quick">
+                <div class="card-head">
+                  <h2>Acesso rápido</h2>
+                </div>
+                <button data-action="booking">
+                  <img src="../User/assets/icons/plus.svg" alt="" /> Adicionar agendamento
+                  <span>↗</span></button
+                ><button data-action="client">
+                  <img src="../User/assets/icons/user-round.svg" alt="" /> Adicionar cliente
+                  <span>↗</span></button
+                ><button data-view="horarios">
+                  <img src="../User/assets/icons/calendar-check.svg" alt="" /> Gerir horários
+                  <span>↗</span>
+                </button>
+              </article>
+            </div>
+          </section>
+          <section class="view" id="view-agenda">
+            <div class="page-heading">
+              <div>
+                <h1>Agenda</h1>
+                <p>Visualize, remarque e cancele horários desta prévia.</p>
+              </div>
+              <button class="button dark" data-action="booking">
+                Novo horário <span>↗</span>
+              </button>
+            </div>
+            <div class="two-col">
+              <article class="card section-card">
+                <div class="card-head">
+                  <h2>Horários</h2>
+                  <input id="agenda-date" type="date" aria-label="Filtrar agenda por data" />
+                </div>
+                <div id="agenda-list" class="item-list"></div>
+              </article>
+              <article class="card info-card">
+                <h2>Antes de agendar</h2>
+                <div class="info-row">
+                  <strong>Atendimento</strong><span>Segunda a sábado, exceto no Natal</span>
+                </div>
+                <div class="info-row"><strong>Intervalo</strong><span>12h às 13h</span></div>
+                <div class="info-row"><strong>Prévia</strong><span>Sem reserva real</span></div>
+              </article>
+            </div>
+          </section>
+          <section class="view" id="view-clientes">
+            <div class="page-heading">
+              <div>
+                <h1>Clientes</h1>
+                <p>Consulte os contatos adicionados nesta sessão.</p>
+              </div>
+              <button class="button dark" data-action="client">Novo cliente <span>↗</span></button>
+            </div>
+            <article class="card section-card">
+              <div class="card-head">
+                <h2>Lista de clientes</h2>
+              </div>
+              <div id="client-list" class="item-list"></div>
+            </article>
+          </section>
+          <section class="view" id="view-atendimentos">
+            <div class="page-heading">
+              <div>
+                <h1>Atendimentos</h1>
+                <p>Registre os serviços realizados na agenda da prévia.</p>
+              </div>
+            </div>
+            <article class="card section-card">
+              <div class="card-head">
+                <h2>Histórico da sessão</h2>
+              </div>
+              <div id="service-list" class="item-list"></div>
+            </article>
+          </section>
+          <section class="view" id="view-horarios">
+            <div class="page-heading">
+              <div>
+                <h1>Horários</h1>
+                <p>Defina bloqueios para organizar seu dia nesta prévia.</p>
+              </div>
+              <button class="button dark" data-action="block">
+                Bloquear horário <span>↗</span>
+              </button>
+            </div>
+            <div class="two-col">
+              <article class="card section-card">
+                <div class="card-head">
+                  <h2>Bloqueios</h2>
+                </div>
+                <div id="block-list" class="item-list"></div>
+              </article>
+              <article class="card info-card">
+                <h2>Horário de referência</h2>
+                <div class="info-row">
+                  <strong>Dias</strong><span>Segunda a sábado, exceto no Natal</span>
+                </div>
+                <div class="info-row"><strong>Atendimento</strong><span>07h às 20h</span></div>
+                <div class="info-row"><strong>Intervalo</strong><span>12h às 13h</span></div>
+                <p class="footnote">
+                  A disponibilidade real dependerá da conexão com o sistema de agendamento.
+                </p>
+              </article>
+            </div>
+          </section>
+          <section class="view" id="view-pagamentos">
+            <div class="page-heading">
+              <div>
+                <h1>Pagamentos de planos</h1>
+                <p>Consulte o status das cobranças Pix dos planos.</p>
+              </div>
+            </div>
+            <article class="card">
+              <div class="card-head">
+                <h2>Cobranças Pix</h2>
+                <button class="button" type="button" id="staff-payment-refresh">Atualizar</button>
+              </div>
+              <p id="staff-payment-feedback" role="status"></p>
+              <div class="item-list" id="staff-payment-list"></div>
+            </article>
+          </section>
+          <section class="view" id="view-termos">
+            <div class="page-heading">
+              <div>
+                <h1>Termos de pigmentação</h1>
+                <p>Confira o cliente, a versão do termo e a data de aceite antes do atendimento.</p>
+              </div>
+            </div>
+            <article class="card empty-panel">
+              <img src="../User/assets/icons/scroll-text.svg" alt="" />
+              <h2>Nenhum aceite disponível</h2>
+              <p>O atendimento de pigmentação exige um aceite registrado pelo cliente.</p>
+            </article>
+          </section>
+          <section class="view" id="view-configuracoes" aria-labelledby="title-configuracoes">
+            <div class="page-heading">
+              <div><h1 id="title-configuracoes">Configurações</h1></div>
+            </div>
+            <div data-panel-color-editor></div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <!-- Janela de interação. -->
+    <dialog id="editor">
+      <form id="editor-form">
+        <div class="dialog-head">
+          <span class="overline" id="dialog-kicker">GUREN</span
+          ><button type="button" id="close-dialog" aria-label="Fechar">×</button>
+        </div>
+        <h2 id="dialog-title">Novo horário</h2>
+        <p id="dialog-description">Os dados serão salvos no sistema.</p>
+        <div id="dialog-fields"></div>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <button class="button dark full" type="submit">Salvar dados <span>↗</span></button>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

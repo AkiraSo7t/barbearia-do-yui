@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1800" viewBox="0 0 1440 1800" fill="none">
+  <defs>
+    <linearGradient id="spectrum" x1="220" y1="100" x2="1080" y2="1610" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#90d9ff"/><stop offset=".1" stop-color="#2865ff"/>
+      <stop offset=".23" stop-color="#c65b9a"/><stop offset=".32" stop-color="#e58b63"/>
+      <stop offset=".4" stop-color="#38bceb"/><stop offset=".52" stop-color="#7251ca"/>
+      <stop offset=".63" stop-color="#bdd5ff"/><stop offset=".72" stop-color="#38bceb"/>
+      <stop offset=".8" stop-color="#2865ff"/><stop offset=".89" stop-color="#c65b9a"/>
+      <stop offset=".95" stop-color="#e58b63"/><stop offset="1" stop-color="#edf6ff"/>
+    </linearGradient>
+    <linearGradient id="prism" x1="0" y1="1250" x2="1340" y2="680" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3866ee"/><stop offset=".16" stop-color="#b0d7ff"/>
+      <stop offset=".3" stop-color="#36bccd"/><stop offset=".43" stop-color="#bba6c8"/>
+      <stop offset=".52" stop-color="#e58b63"/><stop offset=".6" stop-color="#b93b82"/>
+      <stop offset=".74" stop-color="#6951d7"/><stop offset=".86" stop-color="#3a7cfa"/>
+      <stop offset="1" stop-color="#bdeaff"/>
+    </linearGradient>
+    <radialGradient id="navy"><stop stop-color="#14284a"/><stop offset="1" stop-color="#05040c" stop-opacity="0"/></radialGradient>
+    <radialGradient id="vignette"><stop offset=".3" stop-color="#05040c" stop-opacity="0"/><stop offset="1" stop-color="#05040c" stop-opacity=".47"/></radialGradient>
+    <filter id="haze" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="35"/></filter>
+    <filter id="bloom" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="13"/></filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3.5"/></filter>
+    <filter id="fluid" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency=".002 .004" numOctaves="2" seed="12" result="flow"/>
+      <feDisplacementMap in="SourceGraphic" in2="flow" scale="32" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="1.8"/>
+    </filter>
+    <path id="vertical" d="M354-160C309 35 370 145 408 325S534 610 504 796 380 1084 507 1274 824 1597 900 1970"/>
+    <path id="fold" d="M732-130C517 92 522 220 505 386S597 590 661 701 672 922 656 1116 581 1331 765 1531 1029 1732 1008 1900"/>
+    <path id="ribbon" d="M-147 1399C82 1410 142 1590 389 1562S689 1362 573 1174 320 1055 203 1016-126 965-178 873"/>
+    <path id="right" d="M1604 393C1398 529 1157 535 1131 672S1345 854 1443 889 1648 985 1504 1138"/>
+    <path id="edge" d="M-114 235C13 341 93 465 100 589S143 787 225 872"/>
+    <path id="diagonal" d="M-197 934C69 941 274 899 531 958S892 1026 1086 1185 1345 1420 1617 1437"/>
+  </defs>
+  <path fill="#05040c" d="M0 0h1440v1800H0z"/>
+  <ellipse cx="500" cy="715" rx="730" ry="850" fill="url(#navy)" opacity=".62"/>
+  <ellipse cx="1130" cy="1360" rx="750" ry="550" fill="url(#navy)" opacity=".5"/>
+  <g>
+    <g stroke="url(#spectrum)" filter="url(#haze)" opacity=".76">
+      <use href="#vertical" stroke-width="120"/><use href="#fold" stroke-width="72"/>
+      <use href="#right" stroke-width="100"/><use href="#edge" stroke-width="53"/>
+    </g>
+    <g stroke="url(#prism)" filter="url(#haze)" opacity=".8">
+      <use href="#ribbon" stroke-width="132"/><use href="#diagonal" stroke-width="47"/>
+    </g>
+    <g stroke="url(#spectrum)" filter="url(#bloom)" opacity=".85">
+      <use href="#vertical" stroke-width="23"/><use href="#fold" stroke-width="15"/>
+      <use href="#right" stroke-width="32"/><use href="#edge" stroke-width="17"/>
+    </g>
+    <g stroke="url(#prism)" filter="url(#bloom)" opacity=".9">
+      <use href="#ribbon" stroke-width="41"/><use href="#diagonal" stroke-width="11"/>
+    </g>
+    <g filter="url(#soft)">
+      <use href="#vertical" stroke="url(#spectrum)" stroke-width="7" opacity=".82"/>
+      <use href="#fold" stroke="url(#spectrum)" stroke-width="5" opacity=".6" transform="translate(9 -2)"/>
+      <use href="#edge" stroke="url(#spectrum)" stroke-width="4" opacity=".9"/>
+      <use href="#right" stroke="url(#prism)" stroke-width="7" opacity=".74"/>
+      <use href="#ribbon" stroke="url(#prism)" stroke-width="8" opacity=".8"/>
+      <use href="#ribbon" stroke="#8a97ff" stroke-width="3" opacity=".4" transform="translate(-4 -14)"/>
+      <use href="#diagonal" stroke="url(#spectrum)" stroke-width="3" opacity=".6"/>
+    </g>
+  </g>
+  <path fill="url(#vignette)" d="M0 0h1440v1800H0z"/>
+</svg>

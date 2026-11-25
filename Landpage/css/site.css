@@ -1,0 +1,1230 @@
+/* Tokens compartilhados, componentes e ajustes responsivos. */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+  --cor-pagina: #f3f2ef;
+  --cor-branco: #fff;
+  --cor-texto-base: #11100e;
+  --cor-texto-secundario: #635f58;
+  --cor-linha: #d8d5cf;
+  --cor-destaque: #06174b;
+  --cor-fundo-creme: #efebdc;
+  --cor-texto-escuro: #111;
+  --cor-fundo-escuro: #050505;
+  --cor-borda-servicos: #383838;
+  --cor-fundo-galeria: #d8d3c2;
+  --cor-texto-apoio: #a9a9a9;
+  --cor-texto-claro: #e8eaeb;
+  --cor-borda-depoimento: #2b2b2b;
+  --cor-linha-link: #727272;
+  --cor-linha-avaliacao: #363636;
+  --cor-borda-cartao: #3d3d3d;
+  --cor-texto-contagem: #cfcfcf;
+  --cor-legenda: #56534b;
+  --cor-fundo-instagram: #d8d6d0;
+  --cor-texto-imprensa: #6b675d;
+  --cor-titulo-base: #333;
+  --cor-link-base: #2ea3f2;
+  --cor-variacao-01: rgba(6, 23, 75, 0.22);
+  --cor-variacao-02: rgba(239, 235, 220, 0.78);
+  --cor-variacao-03: rgba(6, 23, 75, 0.14);
+  --cor-variacao-04: rgba(255, 255, 255, 0.045);
+  --cor-variacao-05: #f9fbfc;
+  --cor-variacao-06: #858b90;
+  --cor-variacao-07: #3e4449;
+  --cor-variacao-08: #dfe3e5;
+  --cor-variacao-09: #6e7479;
+  --cor-variacao-10: #f8fafb;
+  --cor-variacao-11: #949a9e;
+  --cor-variacao-12: rgba(6, 23, 75, 0.55);
+  --cor-variacao-13: rgba(6, 23, 75, 0.035);
+  --cor-variacao-14: rgba(24, 20, 16, 0.1);
+  --cor-variacao-15: rgba(24, 20, 16, 0.16);
+  --cor-variacao-16: rgba(24, 20, 16, 0.28);
+
+  --sombra-01: 0 10px 28px var(--cor-variacao-15);
+  --sombra-02: 0 14px 34px var(--cor-variacao-16);
+
+  --espaco-botao-reserva-interno: 16px 38px;
+  --espaco-logo-padding-inline: 8px;
+
+  --fonte-corpo: 'DM Sans', sans-serif;
+  --fonte-titulo: 'Bebas Neue', sans-serif;
+  --fonte-detalhe: 'IBM Plex Mono', monospace;
+
+  --medida-galeria-card-largura: clamp(280px, 31vw, 370px);
+  --medida-galeria-card-largura-celular: 86%;
+  --medida-logo-largura: 164px;
+  --medida-logo-largura-2: 170px;
+  --medida-logo-largura-3: 214px;
+  --medida-logo-largura-4: 140px;
+  --medida-logo-largura-celular: 142px;
+  --medida-logo-largura-celular-2: 190px;
+  --medida-logo-largura-celular-3: 146px;
+  --medida-logo-largura-celular-4: 120px;
+  --medida-logo-largura-celular-5: 148px;
+  --tamanho-texto-02: 12px;
+  --tamanho-texto-03: 11px;
+  --tamanho-texto-07: clamp(25px, 3vw, 37px);
+  --tamanho-texto-08: 10px;
+  --tamanho-texto-09: 9px;
+  --tamanho-texto-14: clamp(42px, 6vw, 68px);
+}
+
+html,
+body,
+div,
+span,
+a,
+img,
+p,
+h1,
+h2,
+h3,
+ul,
+li,
+strong,
+time {
+  vertical-align: baseline;
+}
+
+ul {
+  list-style: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.street .site-nav {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 4;
+}
+
+.street .site-nav .navlinks {
+  display: flex;
+  align-items: center;
+}
+
+.street .site-hero {
+  display: block;
+}
+
+.street .site-hero > img,
+.street .site-hero > picture,
+.street .site-hero > picture > img {
+  display: block;
+}
+
+.site {
+  position: relative;
+  overflow: hidden;
+}
+
+.street-gallery {
+  overflow: hidden;
+}
+
+.street-gallery-stage {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+
+.street-gallery-stage::-webkit-scrollbar {
+  display: none;
+}
+
+.street-gallery-stage.dragging {
+  scroll-snap-type: none;
+}
+
+.street-gallery-card {
+  position: relative;
+  flex: 0 0 var(--medida-galeria-card-largura);
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.street-gallery-card img {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.street-service-row {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) 175px 105px;
+  align-items: center;
+}
+
+.client-strip {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  touch-action: pan-y;
+}
+
+.client-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.client-logo {
+  flex: 0 0 var(--medida-logo-largura);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.client-logo img {
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
+.client-logo.mitchell-ness {
+  flex-basis: var(--medida-logo-largura-2);
+}
+
+.client-logo.wide {
+  flex-basis: var(--medida-logo-largura-3);
+}
+
+.client-logo.sony {
+  flex-basis: var(--medida-logo-largura-2);
+}
+
+.client-logo.gillette {
+  flex-basis: var(--medida-logo-largura-4);
+}
+
+.street-review {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+  overflow: hidden;
+}
+
+.street-review-photo {
+  overflow: hidden;
+}
+
+.street-review-photo img {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.street-review-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.street-review cite {
+  display: block;
+}
+
+.street-review-rating {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.street-review-card-plat {
+  display: block;
+}
+
+.street-review-card-num {
+  display: block;
+}
+
+.street-review-card-stars {
+  display: block;
+}
+
+.street-review-card-count {
+  display: block;
+}
+
+.street-review-card-btn {
+  display: block;
+}
+
+#throne-book-pill {
+  position: fixed;
+  left: 50%;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  z-index: 9998;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.street .site-nav {
+  height: 64px;
+}
+
+.street .site-hero {
+  min-height: 0;
+}
+
+.street .site-hero > img,
+.street .site-hero > picture,
+.street .site-hero > picture > img {
+  width: 100%;
+  height: auto;
+}
+
+.site {
+  min-height: 620px;
+}
+
+.street-gallery-stage {
+  height: clamp(470px, 54vw, 640px);
+}
+
+.street-gallery-card {
+  width: var(--medida-galeria-card-largura);
+  height: 100%;
+}
+
+.street-gallery-card img {
+  width: 100%;
+  height: 100%;
+}
+
+.client-strip {
+  --logo-slot-height: 94px;
+  --logo-image-height: 44px;
+}
+
+.client-logo {
+  width: var(--medida-logo-largura);
+  height: var(--logo-slot-height);
+}
+
+.client-logo img {
+  width: 100%;
+  height: var(--logo-image-height);
+  max-width: 100%;
+  max-height: var(--logo-image-height);
+}
+
+.client-logo.sm img {
+  height: 44px;
+  max-height: 44px;
+}
+
+.client-logo.sony img {
+  height: 27px;
+  max-height: 27px;
+}
+
+.client-logo.nike img {
+  height: 25px;
+  max-height: 25px;
+}
+
+.client-logo.gillette img {
+  height: 30px;
+  max-height: 30px;
+}
+
+.client-logo.on-running img {
+  height: 58px;
+  max-height: 58px;
+}
+
+.client-logo.mitchell-ness {
+  width: var(--medida-logo-largura-2);
+}
+
+.client-logo.wide {
+  width: var(--medida-logo-largura-3);
+}
+
+.client-logo.sony {
+  width: var(--medida-logo-largura-2);
+}
+
+.client-logo.gillette {
+  width: var(--medida-logo-largura-4);
+}
+
+.street-review {
+  min-height: 540px;
+}
+
+.street-review-photo {
+  min-height: 540px;
+}
+
+.street-review-photo img {
+  width: 100%;
+  height: 100%;
+}
+
+html,
+body,
+div,
+span,
+a,
+img,
+p,
+h1,
+h2,
+h3,
+ul,
+li,
+strong,
+time {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  padding-bottom: 10px;
+}
+
+p {
+  padding-bottom: 1em;
+}
+
+p:last-of-type {
+  padding-bottom: 0;
+}
+
+figure {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+.street .site-nav .navlinks {
+  gap: 25px;
+}
+
+.street .site-nav .book {
+  padding: var(--espaco-botao-reserva-interno);
+}
+
+.street .site-hero {
+  padding-top: 92px;
+}
+
+.street-gallery-stage {
+  gap: 18px;
+  padding: 30px 5%;
+  scroll-padding-inline: 5%;
+}
+
+.street-gallery-card {
+  margin: 0;
+}
+
+.street-services {
+  padding: 0 5%;
+}
+
+.street-services-head {
+  margin: 0;
+  padding: 25px 0 19px;
+}
+
+.street-service-row {
+  gap: 24px;
+  padding: 22px 0;
+}
+
+.client-strip {
+  gap: 14px;
+  padding: 22px 5%;
+}
+
+.client-logo {
+  padding: 16px 20px;
+}
+
+.client-logo img {
+  margin: auto;
+}
+
+.client-logo.mitchell-ness {
+  padding-inline: var(--espaco-logo-padding-inline);
+}
+
+.client-logo.wide {
+  padding-inline: var(--espaco-logo-padding-inline);
+}
+
+.client-logo.sony {
+  padding-inline: var(--espaco-logo-padding-inline);
+}
+
+.client-logo.gillette {
+  padding-inline: var(--espaco-logo-padding-inline);
+}
+
+.street-review-photo {
+  margin: 0;
+}
+
+.street-review-copy {
+  padding: 54px 9%;
+}
+
+.street-review blockquote {
+  margin: 38px 0 42px;
+}
+
+.street-review blockquote p {
+  margin: 0;
+}
+
+.street-review cite {
+  margin-top: 24px;
+}
+
+.street-review-footer {
+  margin-top: auto;
+}
+
+.street-review-action {
+  margin: 0 0 4px;
+}
+
+.street-review-action a,
+.street-review-rating a {
+  padding-bottom: 2px;
+}
+
+.street-review-rating {
+  padding-top: 18px;
+  gap: 12px 28px;
+}
+
+.street-review-cards {
+  margin-top: 18px;
+}
+
+.street-review-card {
+  padding: 22px 20px 20px;
+  margin-top: 14px;
+}
+
+.street-review-card-num {
+  margin-top: 8px;
+}
+
+.street-review-card-stars {
+  margin-top: 6px;
+}
+
+.street-review-card-count {
+  margin-top: 7px;
+}
+
+.street-review-card-btn {
+  margin-top: 16px;
+  padding: 15px 10px;
+}
+
+.street-review-invite {
+  margin: 18px 0 0;
+}
+
+#throne-book-pill {
+  padding: var(--espaco-botao-reserva-interno);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-size: 14px;
+  line-height: 2;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1;
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 700;
+}
+
+body {
+  font-family: var(--fonte-corpo);
+}
+
+button {
+  font: inherit;
+}
+
+.street .site-nav .navlinks {
+  font-family: var(--fonte-detalhe);
+  font-size: var(--tamanho-texto-03);
+}
+
+.street .site-nav a {
+  text-decoration: none;
+}
+
+.street .site-nav .book {
+  font-weight: 700;
+  font-size: var(--tamanho-texto-02);
+  letter-spacing: 0.08em;
+}
+
+.street-services-head {
+  font: 400 clamp(34px, 5vw, 58px) / 0.85 var(--fonte-titulo);
+  letter-spacing: 0.015em;
+}
+
+.street-service-row {
+  text-decoration: none;
+}
+
+.street-service-row strong {
+  font: 400 var(--tamanho-texto-07) / 0.92 var(--fonte-titulo);
+  letter-spacing: 0.01em;
+}
+
+.street-service-price {
+  font: 400 var(--tamanho-texto-07) / 0.92 var(--fonte-titulo);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.street-service-row time {
+  font: 500 var(--tamanho-texto-08) / 1.2 var(--fonte-detalhe);
+  letter-spacing: 0.06em;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.street-review-kicker,
+.street-review-rating {
+  font: 500 var(--tamanho-texto-09) / 1.35 var(--fonte-detalhe);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.street-review blockquote {
+  font: 400 clamp(27px, 3.2vw, 43px) / 0.98 var(--fonte-titulo);
+  letter-spacing: 0.006em;
+  quotes: none;
+}
+
+.street-review cite {
+  font: 500 var(--tamanho-texto-08) / 1.3 var(--fonte-detalhe);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+.street-review-action {
+  font: 500 clamp(21px, 2.4vw, 30px) / 1.3 var(--fonte-detalhe);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.street-review-action a,
+.street-review-rating a {
+  text-decoration: none;
+}
+
+.street-review-rating a {
+  white-space: nowrap;
+}
+
+.street-review-card-plat {
+  font: 500 var(--tamanho-texto-08) / 1.35 var(--fonte-detalhe);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.street-review-card-num {
+  font: 400 64px/0.95 var(--fonte-titulo);
+  letter-spacing: 0.01em;
+}
+
+.street-review-card-stars {
+  font-size: 17px;
+  letter-spacing: 0.35em;
+}
+
+.street-review-card-count {
+  font: 500 var(--tamanho-texto-03) / 1.35 var(--fonte-detalhe);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.street-review-card-btn {
+  text-align: center;
+  text-decoration: none;
+  font: 700 var(--tamanho-texto-02) / 1 var(--fonte-detalhe);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.street-review-invite {
+  font: 500 var(--tamanho-texto-08) / 1.5 var(--fonte-detalhe);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#throne-book-pill {
+  font: 700 var(--tamanho-texto-02) / 1 var(--fonte-detalhe);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+html,
+body,
+div,
+span,
+a,
+img,
+p,
+h1,
+h2,
+h3,
+ul,
+li,
+strong,
+time {
+  border: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--cor-titulo-base);
+}
+
+a {
+  color: var(--cor-link-base);
+}
+
+:root {
+  color-scheme: light;
+  --page: var(--cor-pagina);
+  --paper: var(--cor-branco);
+  --ink: var(--cor-texto-base);
+  --muted: var(--cor-texto-secundario);
+  --line: var(--cor-linha);
+  --accent: var(--cor-destaque);
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+}
+
+.street {
+  background: var(--cor-fundo-creme);
+  color: var(--cor-texto-escuro);
+}
+
+.street .site-nav {
+  border-bottom: 1px solid var(--cor-variacao-01);
+  background: var(--cor-variacao-02);
+}
+
+.street .site-nav a {
+  color: inherit;
+}
+
+.street .site-nav .book {
+  background: var(--cor-destaque);
+  color: var(--cor-branco);
+  border-color: var(--cor-destaque);
+}
+
+.street .site-hero {
+  background: var(--cor-fundo-creme);
+}
+
+.street-gallery {
+  background: var(--cor-fundo-creme);
+  color: var(--cor-texto-escuro);
+  border-top: 1px solid var(--cor-variacao-03);
+  border-bottom: 1px solid var(--cor-variacao-03);
+}
+
+.street-gallery-card {
+  background: var(--cor-fundo-galeria);
+}
+
+.street-services {
+  background: var(--cor-fundo-escuro);
+  color: var(--cor-branco);
+  border-top: 1px solid var(--cor-borda-servicos);
+  border-bottom: 1px solid var(--cor-borda-servicos);
+}
+
+.street-services-head {
+  border-bottom: 2px solid var(--cor-branco);
+}
+
+.street-service-row {
+  border-bottom: 1px solid var(--cor-borda-servicos);
+  color: inherit;
+}
+
+.street-service-row:hover {
+  background: var(--cor-variacao-04);
+}
+
+.street-service-row:last-child {
+  border-bottom: 0;
+}
+
+.street-service-price {
+  color: var(--cor-branco);
+}
+
+.client-strip {
+  border-top: 2px solid var(--cor-destaque);
+  border-bottom: 2px solid var(--cor-destaque);
+  background: var(--cor-fundo-creme) !important;
+  color: var(--cor-texto-escuro);
+}
+
+.street-review {
+  background: var(--cor-fundo-escuro);
+  color: var(--cor-branco);
+  border-bottom: 2px solid var(--cor-destaque);
+}
+
+.street-review-photo {
+  background: var(--cor-fundo-escuro);
+}
+
+.street-review-copy {
+  border-left: 1px solid var(--cor-borda-depoimento);
+}
+
+.street-review-kicker {
+  color: var(--cor-texto-apoio);
+}
+
+.street-review blockquote p {
+  color: var(--cor-texto-claro);
+}
+
+.street-review cite {
+  color: var(--cor-branco);
+}
+
+.street-review-action {
+  color: var(--cor-texto-apoio);
+}
+
+.street-review-action a,
+.street-review-rating a {
+  color: var(--cor-branco);
+  border-bottom: 1px solid var(--cor-linha-link);
+}
+
+.street-review-rating {
+  border-top: 1px solid var(--cor-linha-avaliacao);
+  color: var(--cor-branco);
+}
+
+.street-review-card {
+  border: 1px solid var(--cor-borda-cartao);
+}
+
+.street-review-card-plat {
+  color: var(--cor-texto-apoio);
+}
+
+.street-review-card-num {
+  color: var(--cor-branco);
+}
+
+.street-review-card-stars {
+  color: var(--cor-branco);
+}
+
+.street-review-card-count {
+  color: var(--cor-texto-contagem);
+}
+
+.street-review-card-btn {
+  background: var(--cor-fundo-creme);
+  color: var(--cor-destaque);
+  border: 1px solid var(--cor-fundo-creme);
+}
+
+.street-review-card-btn:hover {
+  background: var(--cor-destaque);
+  color: var(--cor-fundo-creme);
+}
+
+.street-review-invite {
+  color: var(--cor-texto-apoio);
+}
+
+#throne-book-pill {
+  background: var(--cor-destaque);
+  color: var(--cor-fundo-creme);
+  border: 1.5px solid var(--cor-destaque);
+}
+
+#throne-book-pill:hover {
+  background: var(--cor-fundo-creme);
+  color: var(--cor-destaque);
+}
+
+#throne-book-pill:focus-visible {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+:root {
+  --shadow: 0 18px 55px var(--cor-variacao-14);
+}
+
+html {
+  scroll-behavior: auto;
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.street-gallery-stage {
+  cursor: grab;
+}
+
+.street-gallery-stage.dragging {
+  cursor: grabbing;
+}
+
+.street-gallery-card img {
+  user-select: none;
+  pointer-events: none;
+}
+
+.client-strip {
+  cursor: grab;
+}
+
+.client-strip.dragging {
+  cursor: grabbing;
+}
+
+#throne-book-pill {
+  transform: translateX(-50%);
+  transition:
+    opacity 0.38s ease,
+    transform 0.38s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+  box-shadow: var(--sombra-02);
+}
+
+#throne-book-pill.pill-hidden {
+  opacity: 0;
+  transform: translate(-50%, 18px);
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .street-gallery-card {
+    flex-basis: var(--medida-galeria-card-largura-celular);
+  }
+
+  .client-logo {
+    flex-basis: var(--medida-logo-largura-celular);
+  }
+
+  .client-logo.mitchell-ness {
+    flex-basis: var(--medida-logo-largura-celular-5);
+  }
+
+  .client-logo.wide {
+    flex-basis: var(--medida-logo-largura-celular-2);
+  }
+
+  .client-logo.sony {
+    flex-basis: var(--medida-logo-largura-celular-3);
+  }
+
+  .client-logo.gillette {
+    flex-basis: var(--medida-logo-largura-celular-4);
+  }
+
+  .client-logo.mitchell-ness {
+    flex-basis: var(--medida-logo-largura-celular-5);
+  }
+
+  .street .site-nav .navlinks a:not(.book) {
+    display: none;
+  }
+
+  .street-review {
+    grid-template-columns: 1fr;
+  }
+
+  .street-service-row {
+    grid-template-columns: minmax(0, 1fr) 120px;
+  }
+
+  .street-service-row time {
+    grid-column: 1/-1;
+  }
+
+  #throne-book-pill {
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .street-gallery-stage {
+    height: min(132vw, 560px);
+  }
+
+  .street-gallery-card {
+    width: var(--medida-galeria-card-largura-celular);
+    height: 100%;
+  }
+
+  .client-strip {
+    --logo-slot-height: 84px;
+    --logo-image-height: 38px;
+  }
+
+  .client-logo {
+    width: var(--medida-logo-largura-celular);
+  }
+
+  .client-logo.mitchell-ness {
+    width: var(--medida-logo-largura-celular-2);
+  }
+
+  .client-logo.wide {
+    width: var(--medida-logo-largura-celular-2);
+  }
+
+  .client-logo.sm img {
+    height: 38px;
+    max-height: 38px;
+  }
+
+  .client-logo.sony {
+    width: var(--medida-logo-largura-celular-3);
+  }
+
+  .client-logo.gillette {
+    width: var(--medida-logo-largura-celular-4);
+  }
+
+  .client-logo.mitchell-ness {
+    width: var(--medida-logo-largura-celular-5);
+  }
+
+  .client-logo.sony img {
+    height: 23px;
+    max-height: 23px;
+  }
+
+  .client-logo.nike img {
+    height: 21px;
+    max-height: 21px;
+  }
+
+  .client-logo.gillette img {
+    height: 25px;
+    max-height: 25px;
+  }
+
+  .client-logo.on-running img {
+    height: 50px;
+    max-height: 50px;
+  }
+
+  .street .site-nav {
+    height: 57px;
+  }
+
+  .street-review {
+    min-height: 0;
+  }
+
+  .street-review-photo {
+    min-height: 0;
+    height: auto;
+    max-height: none;
+  }
+
+  .street-review-photo img {
+    height: auto;
+  }
+
+  .street-review-copy {
+    min-height: 440px;
+  }
+
+  .street-gallery-stage {
+    gap: 14px;
+    padding: 18px 7%;
+    scroll-padding-inline: 7%;
+  }
+
+  .client-strip {
+    gap: 10px;
+    padding: 18px 5%;
+  }
+
+  .client-logo {
+    padding: 14px 18px;
+  }
+
+  .street .site-hero {
+    padding-top: 72px;
+  }
+
+  .street-review-copy {
+    padding: 36px 7% 32px;
+  }
+
+  .street-review blockquote {
+    margin: 32px 0 36px;
+  }
+
+  .street-service-row {
+    gap: 8px 14px;
+    padding: 18px 0;
+  }
+
+  #throne-book-pill {
+    padding: 15px 30px;
+  }
+
+  .street-service-row time {
+    text-align: left;
+  }
+
+  .street-review-copy {
+    border-left: 0;
+    border-top: 1px solid var(--cor-borda-depoimento);
+  }
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .street-services-head,
+  .street-service-row strong,
+  .street-service-price {
+    background-position: center;
+  }
+
+  .street-review blockquote p {
+    background-position: center;
+  }
+
+  .street-services-head,
+  .street-service-row strong,
+  .street-service-price {
+    background-size: 100% 180%;
+  }
+
+  .street-review blockquote p {
+    background-size: 100% 180%;
+  }
+
+  .street-services-head,
+  .street-service-row strong,
+  .street-service-price {
+    background: linear-gradient(
+      112deg,
+      var(--cor-variacao-05) 0%,
+      var(--cor-variacao-06) 12%,
+      var(--cor-branco) 23%,
+      var(--cor-variacao-07) 39%,
+      var(--cor-variacao-08) 54%,
+      var(--cor-variacao-09) 68%,
+      var(--cor-variacao-10) 84%,
+      var(--cor-variacao-11) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .street-review blockquote p {
+    background: linear-gradient(
+      112deg,
+      var(--cor-variacao-05) 0%,
+      var(--cor-variacao-06) 12%,
+      var(--cor-branco) 23%,
+      var(--cor-variacao-07) 39%,
+      var(--cor-variacao-08) 54%,
+      var(--cor-variacao-09) 68%,
+      var(--cor-variacao-10) 84%,
+      var(--cor-variacao-11) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: var(--tamanho-texto-02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  #throne-book-pill {
+    transition: none;
+  }
+}
+
+.gallery-scroll-active .street-gallery-stage {
+  scroll-snap-type: none;
+}
+
+/* Controle flutuante de reserva desativado. */
+#throne-book-pill {
+  display: none !important;
+}

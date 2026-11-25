@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="pt-BR" data-panel-role="cliente" data-light-panel-theme>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minha área — GUREN</title>
+    <meta name="description" content="Área do cliente GUREN: horários, planos e dados da conta." />
+    <link rel="stylesheet" href="estrutura.css" />
+    <link rel="stylesheet" href="painel.css" />
+    <link rel="stylesheet" href="client.css?v=21" />
+    <link rel="stylesheet" href="../assets/panel-theme.css?v=8" />
+    <link rel="stylesheet" href="../assets/demo-clock.css" />
+    <link rel="stylesheet" href="checkout.css" />
+    <script src="../assets/api.js?v=panel-session-1" defer></script>
+    <script src="../assets/demo-clock.js" defer></script>
+    <script src="../assets/panel-theme.js?v=api-1" defer></script>
+    <script src="../assets/agenda-rules.js?v=api-1" defer></script>
+    <script src="../assets/preview-catalog.js?v=api-1" defer></script>
+    <script src="checkout.js?v=pix-status-2" defer></script>
+    <script src="avisos.js" defer></script>
+    <script src="client.js?v=plan-entry-1" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Navegação do painel. -->
+      <aside class="sidebar" aria-label="Menu do cliente">
+        <a class="brand" href="../Landpage/index.html" aria-label="GUREN, voltar ao site"
+          >GUREN<span class="brand-dot">.</span></a
+        >
+        <div class="sidebar-caption">ÁREA DO CLIENTE <span>01 / 01</span></div>
+        <nav class="side-nav" aria-label="Páginas da área do cliente">
+          <button class="nav-item is-active" data-view="inicio" aria-current="page">
+            <img class="nav-icon" src="assets/icons/house.svg" alt="" /><span class="nav-label"
+              >Visão geral</span
+            >
+          </button>
+          <button class="nav-item" data-view="agendamentos">
+            <img class="nav-icon" src="assets/icons/calendar-days.svg" alt="" /><span
+              class="nav-label"
+              >Agendamentos</span
+            >
+          </button>
+          <button class="nav-item" data-view="planos">
+            <img class="nav-icon" src="assets/icons/badge-check.svg" alt="" /><span
+              class="nav-label"
+              >Planos</span
+            >
+          </button>
+          <button class="nav-item" data-view="pagamentos">
+            <img class="nav-icon" src="assets/icons/credit-card.svg" alt="" /><span
+              class="nav-label"
+              >Pagamentos</span
+            >
+          </button>
+          <button class="nav-item" data-view="termos">
+            <img class="nav-icon" src="assets/icons/scroll-text.svg" alt="" /><span
+              class="nav-label"
+              >Termos</span
+            >
+          </button>
+          <button class="nav-item" data-view="notificacoes">
+            <img class="nav-icon" src="assets/icons/bell.svg" alt="" /><span class="nav-label"
+              >Notificações</span
+            >
+          </button>
+          <button class="nav-item" data-view="perfil">
+            <img class="nav-icon" src="assets/icons/user-round.svg" alt="" /><span class="nav-label"
+              >Meus dados</span
+            >
+          </button>
+          <button type="button" class="nav-item" data-view="configuracoes">
+            <img class="nav-icon" src="assets/icons/settings.svg" alt="" /><span class="nav-label"
+              >Configurações</span
+            >
+          </button>
+        </nav>
+        <div class="sidebar-bottom">
+          <span class="demo-dot"></span> Prévia da área do cliente<br /><small
+            >Dados de demonstração nesta sessão.</small
+          >
+        </div>
+      </aside>
+      <!-- Conteúdo principal. -->
+      <main class="main-content">
+        <header class="topbar">
+          <button class="mobile-menu" type="button" aria-label="Abrir menu" aria-expanded="false">
+            <img src="assets/icons/menu.svg" alt="" /></button
+          ><span class="topbar-label">GUREN / CLIENTE</span>
+          <nav class="top-tabs" aria-label="Navegação principal">
+            <button type="button" class="top-tab" data-view="inicio">Início</button
+            ><button type="button" class="top-tab" data-view="agendamentos">Agenda</button
+            ><button type="button" class="top-tab" data-view="planos">Planos</button
+            ><button type="button" class="top-tab" data-view="perfil">Perfil</button>
+          </nav>
+          <div class="topbar-right">
+            <button
+              class="notification-trigger"
+              type="button"
+              data-view="notificacoes"
+              aria-label="Ver notificações"
+            >
+              <img class="top-bell" src="assets/icons/bell.svg" alt="" /> Avisos</button
+            ><button class="avatar" type="button" data-view="perfil" aria-label="Abrir meus dados">
+              GC
+            </button>
+          </div>
+        </header>
+        <div class="content-wrap">
+          <section class="view is-visible" id="view-inicio" aria-labelledby="title-inicio">
+            <h1 id="title-inicio" class="dashboard-title">Meu espaço</h1>
+            <div class="dashboard-grid">
+              <article class="dash-card dash-banner">
+                <div class="banner-copy">
+                  <h2>Seu próximo corte<br />começa aqui.</h2>
+                  <p>Escolha o serviço e encontre um horário para você.</p>
+                  <button class="dash-button" type="button" data-action="new-booking">
+                    Agendar horário
+                    <span aria-hidden="true"
+                      ><img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt=""
+                    /></span>
+                  </button>
+                </div>
+                <div class="banner-sculpture" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+              </article>
+              <article class="dash-card dash-calendar">
+                <div class="dash-card-head">
+                  <h2 id="dashboard-month">Calendário</h2>
+                  <button type="button" data-view="agendamentos" aria-label="Abrir agendamentos">
+                    <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                  </button>
+                </div>
+                <div class="calendar-week" id="dashboard-week" aria-label="Próximos dias"></div>
+                <button class="dash-text-link" type="button" data-view="agendamentos">
+                  Ver minha agenda
+                  <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                </button>
+              </article>
+              <article class="dash-card dash-services">
+                <div class="dash-card-head">
+                  <h2>Serviços</h2>
+                  <button type="button" data-action="new-booking" aria-label="Agendar serviço">
+                    <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                  </button>
+                </div>
+                <div class="service-tiles">
+                  <button
+                    type="button"
+                    data-action="new-booking"
+                    class="service-tile service-lilac"
+                    data-service="Cabelo"
+                  >
+                    <span class="service-symbol" aria-hidden="true"
+                      ><img src="assets/icons/scissors.svg" alt="" /></span
+                    ><strong>Cabelo</strong><small>Um novo visual</small></button
+                  ><button
+                    type="button"
+                    data-action="new-booking"
+                    class="service-tile service-blue"
+                    data-service="Barba"
+                  >
+                    <span class="service-symbol" aria-hidden="true"
+                      ><img src="assets/icons/sparkles.svg" alt="" /></span
+                    ><strong>Barba</strong><small>Detalhes que marcam</small></button
+                  ><button
+                    type="button"
+                    data-action="new-booking"
+                    class="service-tile service-green"
+                    data-service="Sobrancelha"
+                  >
+                    <span class="service-symbol" aria-hidden="true"
+                      ><img src="assets/icons/sparkles.svg" alt="" /></span
+                    ><strong>Mais cuidados</strong><small>Sobrancelha e pigmentação</small>
+                  </button>
+                </div>
+              </article>
+              <article class="dash-card dash-plan">
+                <div class="dash-card-head">
+                  <h2>Meu plano</h2>
+                  <button type="button" data-view="planos" aria-label="Ver planos">
+                    <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                  </button>
+                </div>
+                <strong data-active-plan>Sem plano ativo</strong>
+                <p>Conheça as opções para manter seu cuidado em dia.</p>
+                <button class="dash-text-link" type="button" data-view="planos">
+                  Explorar planos
+                  <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                </button>
+              </article>
+              <article class="dash-card dash-visit">
+                <div class="dash-card-head">
+                  <h2>Próxima visita</h2>
+                  <button type="button" data-view="agendamentos" aria-label="Ver agendamentos">
+                    <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                  </button>
+                </div>
+                <strong id="overview-next">Nenhum agendamento</strong>
+                <p>Seu próximo agendamento aparecerá aqui.</p>
+              </article>
+              <article class="dash-card dash-stats">
+                <div class="dash-card-head">
+                  <h2>Seu resumo</h2>
+                </div>
+                <div class="stat-number" id="dashboard-booking-count">0</div>
+                <p>agendamentos futuros</p>
+                <div class="stat-small">
+                  <span><strong>03</strong> planos disponíveis</span
+                  ><span><strong>04</strong> serviços</span>
+                </div>
+              </article>
+              <article class="dash-card dash-promo">
+                <div class="promo-art" aria-hidden="true"></div>
+                <div class="promo-copy">
+                  <h2>Seu cuidado,<br />no seu ritmo.</h2>
+                  <p>Conheça o plano que combina com você.</p>
+                  <button class="dash-button" type="button" data-view="planos">
+                    Ver planos
+                    <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                  </button>
+                </div>
+              </article>
+              <article class="dash-card dash-notices">
+                <div class="dash-card-head">
+                  <h2>Notificações</h2>
+                  <button type="button" data-view="notificacoes" aria-label="Ver notificações">
+                    <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                  </button>
+                </div>
+                <div id="latest-rescheduling-notice"></div>
+                <div class="dash-notice">
+                  <span class="notice-icon" aria-hidden="true"
+                    ><img src="assets/icons/info.svg" alt=""
+                  /></span>
+                  <div>
+                    <strong>Bem-vindo ao seu espaço</strong>
+                    <p>
+                      Esta área é uma prévia. Reservas reais estarão disponíveis quando o sistema
+                      estiver conectado.
+                    </p>
+                  </div>
+                </div>
+                <button class="dash-text-link" type="button" data-view="notificacoes">
+                  Ver todos os avisos
+                  <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                </button>
+              </article>
+            </div>
+          </section>
+          <section
+            class="view detail-view"
+            id="view-agendamentos"
+            aria-labelledby="title-agendamentos"
+          >
+            <div class="detail-heading">
+              <div>
+                <h1 id="title-agendamentos">Agendamentos</h1>
+                <p>Encontre, acompanhe e organize seus horários.</p>
+              </div>
+              <button class="dash-button" type="button" data-action="new-booking">
+                Novo horário <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+              </button>
+            </div>
+            <div class="detail-grid appointments-grid">
+              <article class="dash-card detail-hero lavender">
+                <div class="detail-icon"><img src="assets/icons/calendar-days.svg" alt="" /></div>
+                <div>
+                  <h2>Seu tempo, seu estilo.</h2>
+                  <p>Escolha um serviço e agende seu horário.</p>
+                </div>
+                <button class="dash-button" type="button" data-action="new-booking">
+                  Agendar agora
+                  <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                </button>
+              </article>
+              <article class="dash-card detail-rules">
+                <div class="dash-card-head">
+                  <h2>Antes de agendar</h2>
+                  <img src="assets/icons/info.svg" alt="" />
+                </div>
+                <div class="rule-row">
+                  <strong>Segunda a sábado</strong><span>Intervalo das 12h às 13h.</span>
+                </div>
+                <div class="rule-row">
+                  <strong>Remarcação</strong><span>Até 5 horas antes do horário.</span>
+                </div>
+                <div class="rule-row">
+                  <strong>Cancelamento</strong><span>Até um dia antes do atendimento.</span>
+                </div>
+              </article>
+              <article class="dash-card detail-list">
+                <div class="dash-card-head">
+                  <h2>Próximos horários</h2>
+                  <span class="dash-kicker">SUA AGENDA</span>
+                </div>
+                <div id="booking-list" class="booking-list"></div>
+              </article>
+            </div>
+          </section>
+          <section class="view detail-view" id="view-planos" aria-labelledby="title-planos">
+            <div class="detail-heading">
+              <div>
+                <h1 id="title-planos">Planos</h1>
+                <p>Escolha como quer cuidar do seu estilo.</p>
+              </div>
+            </div>
+            <div class="detail-grid plans-layout">
+              <article class="dash-card plan-overview lavender">
+                <div class="detail-icon"><img src="assets/icons/badge-check.svg" alt="" /></div>
+                <h2 data-active-plan>Sem plano ativo</h2>
+                <p>Os benefícios começam após a confirmação do pagamento.</p>
+              </article>
+              <article class="dash-card plan-explainer">
+                <div class="dash-card-head">
+                  <h2>Como funciona</h2>
+                  <img src="assets/icons/sparkles.svg" alt="" />
+                </div>
+                <div class="rule-row">
+                  <strong>Escolha o plano</strong><span>Compare serviços e frequência.</span>
+                </div>
+                <div class="rule-row">
+                  <strong>Pague via PIX</strong><span>QR Code ou Pix Copia e Cola.</span>
+                </div>
+                <div class="rule-row">
+                  <strong>Ative seus benefícios</strong><span>Após confirmação do pagamento.</span>
+                </div>
+              </article>
+            </div>
+            <div class="detail-section-title"><h2>Escolha seu plano</h2></div>
+            <div class="plan-grid">
+              <article class="plan-card">
+                <h2>Básico</h2>
+                <div class="price">R$ 130 <span>/ mês</span></div>
+                <p>Cabelo + barba, uma vez por semana.</p>
+                <ul>
+                  <li>Cabelo</li>
+                  <li>Barba</li>
+                  <li>1 utilização semanal</li>
+                </ul>
+                <button type="button" class="button button-outline" data-action="plan-info">
+                  Quero este plano
+                  <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                </button>
+              </article>
+              <article class="plan-card featured">
+                <h2>Intermediário</h2>
+                <div class="price">R$ 150 <span>/ mês</span></div>
+                <p>Cabelo, barba e sobrancelha ou pigmentação, uma vez por semana.</p>
+                <ul>
+                  <li>Cabelo e barba</li>
+                  <li>Sobrancelha ou pigmentação</li>
+                  <li>1 utilização semanal</li>
+                </ul>
+                <button type="button" class="button button-light" data-action="plan-info">
+                  Quero este plano
+                  <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                </button>
+              </article>
+              <article class="plan-card">
+                <h2>Completo</h2>
+                <div class="price">R$ 200 <span>/ mês</span></div>
+                <p>Os quatro serviços, com uso ilimitado durante a validade.</p>
+                <ul>
+                  <li>Cabelo e barba</li>
+                  <li>Sobrancelha e pigmentação</li>
+                  <li>Uso ilimitado</li>
+                </ul>
+                <button type="button" class="button button-outline" data-action="plan-info">
+                  Quero este plano
+                  <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                </button>
+              </article>
+            </div>
+          </section>
+          <section class="view detail-view" id="view-pagamentos" aria-labelledby="title-pagamentos">
+            <div class="detail-heading">
+              <div>
+                <h1 id="title-pagamentos">Pagamentos</h1>
+                <p>Consulte seus pagamentos de planos em um só lugar.</p>
+              </div>
+            </div>
+            <div class="detail-grid payments-grid">
+              <article class="dash-card detail-hero blue">
+                <div class="detail-icon"><img src="assets/icons/wallet.svg" alt="" /></div>
+                <h2 id="payment-overview">Nenhum pagamento</h2>
+                <p>Suas cobranças e comprovantes aparecerão aqui.</p>
+                <button class="dash-button" type="button" data-view="planos">
+                  Conhecer planos
+                  <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                </button>
+              </article>
+              <article class="dash-card detail-rules">
+                <div class="dash-card-head">
+                  <h2>Pagamento de planos</h2>
+                  <img src="assets/icons/credit-card.svg" alt="" />
+                </div>
+                <div class="rule-row">
+                  <strong>Pagamento no site</strong><span>Via PIX, com QR Code.</span>
+                </div>
+                <div class="rule-row">
+                  <strong>Confirmação</strong><span>O plano começa após aprovação.</span>
+                </div>
+                <div class="rule-row"><strong>Renovação</strong><span>Não é automática.</span></div>
+              </article>
+              <article class="dash-card detail-list">
+                <div class="dash-card-head">
+                  <h2>Histórico</h2>
+                  <span class="dash-kicker">PAGAMENTOS</span>
+                </div>
+                <p id="payment-error" role="status"></p>
+                <div id="payment-history"></div>
+                <div id="payment-empty" class="detail-empty">
+                  <img src="assets/icons/credit-card.svg" alt="" /><strong
+                    >Seu histórico está vazio.</strong
+                  >
+                  <p>Quando você contratar um plano, seus pagamentos aparecerão nesta seção.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section class="view detail-view" id="view-termos" aria-labelledby="title-termos">
+            <div class="detail-heading">
+              <div>
+                <h1 id="title-termos">Termos</h1>
+                <p>Consulte os termos que você aceitou.</p>
+              </div>
+            </div>
+            <div class="detail-grid terms-grid">
+              <article class="dash-card detail-hero green">
+                <div class="detail-icon"><img src="assets/icons/scroll-text.svg" alt="" /></div>
+                <h2>Termo de pigmentação</h2>
+                <p>
+                  Apenas pigmentação exige termo. O documento oficial precisa estar disponível antes
+                  de registrar o aceite.
+                </p>
+              </article>
+              <article class="dash-card detail-rules">
+                <div class="dash-card-head">
+                  <h2>O que fica registrado</h2>
+                  <img src="assets/icons/badge-check.svg" alt="" />
+                </div>
+                <div class="rule-row">
+                  <strong>Versão do termo</strong><span>O documento aceito.</span>
+                </div>
+                <div class="rule-row">
+                  <strong>Data do aceite</strong><span>Quando você confirmou.</span>
+                </div>
+                <div class="rule-row"><strong>Serviço</strong><span>Pigmentação.</span></div>
+              </article>
+              <article class="dash-card detail-list">
+                <div class="dash-card-head">
+                  <h2>Termos aceitos</h2>
+                  <span class="dash-kicker">HISTÓRICO</span>
+                </div>
+                <div class="detail-empty">
+                  <img src="assets/icons/scroll-text.svg" alt="" /><strong
+                    >Nenhum termo aceito.</strong
+                  >
+                  <p>Seus documentos aparecerão aqui depois de um aceite real.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section
+            class="view detail-view"
+            id="view-notificacoes"
+            aria-labelledby="title-notificacoes"
+          >
+            <div class="detail-heading">
+              <div>
+                <h1 id="title-notificacoes">Notificações</h1>
+                <p>Acompanhe avisos sobre seus horários e seu plano.</p>
+              </div>
+            </div>
+            <div class="detail-grid notices-grid">
+              <article class="dash-card detail-hero lavender">
+                <div class="detail-icon"><img src="assets/icons/bell.svg" alt="" /></div>
+                <h2>Avisos pelo WhatsApp</h2>
+                <p>
+                  A ativação ficará disponível quando o número oficial do bot estiver configurado.
+                </p>
+              </article>
+              <article class="dash-card detail-rules">
+                <div class="dash-card-head">
+                  <h2>Tipos de aviso</h2>
+                  <img src="assets/icons/info.svg" alt="" />
+                </div>
+                <div class="rule-row">
+                  <strong>Agendamentos</strong
+                  ><span>Lembretes com uma hora de antecedência e alterações do horário.</span>
+                </div>
+                <div class="rule-row">
+                  <strong>Planos</strong><span>Pagamento e aviso de expiração.</span>
+                </div>
+                <div class="rule-row">
+                  <strong>Conta</strong><span>Informações importantes.</span>
+                </div>
+              </article>
+              <article class="dash-card detail-list">
+                <div class="dash-card-head">
+                  <h2>Todos os avisos</h2>
+                  <span class="dash-kicker">RECENTES</span>
+                </div>
+                <div id="rescheduling-notices" aria-live="polite"></div>
+                <p id="notices-empty">Nenhum aviso por enquanto.</p>
+              </article>
+            </div>
+          </section>
+          <section class="view detail-view" id="view-perfil" aria-labelledby="title-perfil">
+            <div class="detail-heading">
+              <div>
+                <h1 id="title-perfil">Meus dados</h1>
+                <p>Organize seus dados de contato.</p>
+              </div>
+            </div>
+            <div class="detail-grid profile-grid">
+              <article class="dash-card profile-intro lavender">
+                <div class="detail-icon"><img src="assets/icons/user-round.svg" alt="" /></div>
+                <h2>Seu espaço, seus dados.</h2>
+                <p>Mantenha seus dados de contato atualizados.</p>
+              </article>
+              <article class="dash-card profile-security">
+                <div class="dash-card-head">
+                  <h2>Privacidade</h2>
+                  <img src="assets/icons/badge-check.svg" alt="" />
+                </div>
+                <p>O CPF identifica sua conta e não pode ser alterado nesta página.</p>
+              </article>
+              <form class="dash-card profile-form" id="profile-form">
+                <div class="dash-card-head">
+                  <h2>Informações pessoais</h2>
+                  <span class="dash-kicker">EDIÇÃO</span>
+                </div>
+                <div class="form-grid">
+                  <label
+                    >Nome completo<input
+                      name="name"
+                      autocomplete="name"
+                      placeholder="Seu nome completo"
+                      required /></label
+                  ><label
+                    >Telefone<input
+                      name="phone"
+                      type="tel"
+                      autocomplete="tel"
+                      placeholder="(31) 99999-9999"
+                      required /></label
+                  ><label
+                    >CPF<input
+                      name="cpf"
+                      inputmode="numeric"
+                      placeholder="000.000.000-00"
+                      disabled
+                    /><small>Não editável nesta página.</small></label
+                  ><label
+                    >WhatsApp<input name="whatsapp" type="tel" placeholder="(31) 99999-9999"
+                  /></label>
+                </div>
+                <button class="dash-button" type="submit">
+                  Salvar dados
+                  <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+                </button>
+                <p class="form-feedback" id="profile-feedback" role="status"></p>
+              </form>
+            </div>
+          </section>
+          <section
+            class="view detail-view"
+            id="view-configuracoes"
+            aria-labelledby="title-configuracoes"
+          >
+            <div class="detail-heading">
+              <div><h1 id="title-configuracoes">Configurações</h1></div>
+            </div>
+            <div data-panel-color-editor></div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <!-- Janela de interação. -->
+    <dialog
+      id="rescheduling-dialog"
+      class="rescheduling-dialog"
+      aria-labelledby="rescheduling-title"
+    >
+      <img class="rescheduling-icon" src="assets/icons/calendar-days.svg" alt="" />
+      <h2 id="rescheduling-title">Seu horário mudou</h2>
+      <div id="rescheduling-summary"></div>
+      <div class="rescheduling-actions">
+        <button type="button" class="dash-button" data-acknowledge autofocus>Entendi</button>
+        <button type="button" class="button button-outline" data-open-rescheduled>
+          Ver agendamento
+        </button>
+      </div>
+    </dialog>
+    <dialog id="booking-dialog" class="booking-dialog" aria-labelledby="dialog-title">
+      <form method="dialog" id="booking-form">
+        <div class="dialog-top">
+          <span class="eyebrow">GUREN / NOVO HORÁRIO</span
+          ><button type="button" id="close-dialog" class="close-button" aria-label="Fechar">
+            <img src="assets/icons/x.svg" alt="" />
+          </button>
+        </div>
+        <h2 id="dialog-title">AGENDAR<br />HORÁRIO<span class="accent">.</span></h2>
+        <p>Escolha um serviço, data e horário disponível.</p>
+        <label
+          >Serviço<select name="service" required>
+            <option value="">Selecione</option>
+            <option>Cabelo</option>
+            <option>Barba</option>
+            <option>Sobrancelha</option>
+            <option>Pigmentação</option>
+          </select></label
+        >
+        <div class="dialog-grid">
+          <label>Data<input type="date" name="date" required /></label
+          ><label
+            >Horário<select name="time" required>
+              <option value="">Selecione</option>
+            </select></label
+          >
+        </div>
+        <div id="booking-terms-note" hidden>
+          <p>Pigmentação exige a leitura e o aceite do termo antes do atendimento.</p>
+          <button type="button" class="dash-button" id="view-pigmentation-term">
+            Ver requisitos do termo
+          </button>
+        </div>
+        <p id="dialog-feedback" class="form-feedback" role="status"></p>
+        <button class="button button-dark dialog-submit" type="submit">
+          Confirmar agendamento
+          <img class="icon-arrow" src="assets/icons/arrow-up-right.svg" alt="" />
+        </button>
+      </form>
+    </dialog>
+    <!-- Janela de interação. -->
+    <dialog id="checkout-dialog" class="booking-dialog" aria-labelledby="checkout-title">
+      <header class="dialog-top">
+        <h2 id="checkout-title">Pagamento via Pix</h2>
+        <button
+          type="button"
+          id="close-checkout"
+          class="close-button"
+          aria-label="Fechar pagamento"
+        >
+          <img src="assets/icons/x.svg" alt="" />
+        </button>
+      </header>
+      <div class="checkout-grid">
+        <section class="checkout-card" aria-label="Como pagar">
+          <h3 id="checkout-plan"></h3>
+          <p id="checkout-benefits"></p>
+          <p id="checkout-status" class="checkout-status" role="status"></p>
+          <div id="checkout-pix" class="checkout-pix" hidden>
+            <p>Escaneie o QR Code no app do seu banco ou copie o código Pix.</p>
+            <img id="checkout-qr" alt="QR Code Pix para este pagamento" width="220" height="220" />
+            <label for="checkout-code">Pix Copia e Cola</label>
+            <input id="checkout-code" type="text" readonly spellcheck="false" />
+            <button type="button" class="button button-outline" id="checkout-copy">
+              Copiar código
+            </button>
+            <small id="checkout-expiry"></small>
+          </div>
+          <p id="checkout-feedback" role="status"></p>
+        </section>
+        <section class="checkout-card" aria-label="Resumo da contratação">
+          <h3>Resumo</h3>
+          <p id="checkout-summary-plan"></p>
+          <p>30 dias de acesso após a confirmação. Renovação manual.</p>
+          <div class="checkout-total"><span>Total</span><strong id="checkout-total"></strong></div>
+          <button class="dash-button" type="button" id="checkout-generate" hidden>Gerar Pix</button>
+          <button class="dash-button" type="button" id="checkout-retry" hidden>
+            Tentar novamente
+          </button>
+          <button class="button button-outline" type="button" id="checkout-history">
+            Ver meus pagamentos
+          </button>
+          <small>Ambiente de testes Asaas Sandbox</small>
+        </section>
+      </div>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
